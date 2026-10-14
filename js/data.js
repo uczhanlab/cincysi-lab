@@ -152,24 +152,24 @@ window.SITE_DATA = {
     {
       name: "Justin Zhan",
       role: "Principal Investigator",
-      photo: "images/members/justin-zhan.jpg",
+      photo: "images/Dr.Zhan2.jpeg",
       email: "justin.zhan@uc.edu",
-      focus: "Data science, artificial intelligence, blockchain, biomedical informatics, and social computing.",
+      focus: "Data Science, Artificial Intelligence, Blockchain, Biomedical Informatics, Social Computing",
       links: { linkedin: "", github: "", scholar: "", website: "https://drjustinzhan.com" }
     },
     {
-      name: "Student Name",
-      role: "Ph.D. Candidate",
-      photo: "",
-      email: "",
+      name: "Ritesh Janga",
+      role: "Ph.D. Student",
+      photo: "images/Ritesh.jpeg",
+      email: "jangarh@mail.uc.edu",
       focus: "Placeholder research focus statement.",
       links: { linkedin: "", github: "", scholar: "", website: "" }
     },
     {
-      name: "Student Name",
-      role: "Graduate Researcher",
-      photo: "",
-      email: "",
+      name: "Yagna Manasa Boyapati",
+      role: "Ph.D. Student",
+      photo: "images/Manasa.jpeg",
+      email: "boyapaya@mail.uc.edu",
       focus: "Placeholder research focus statement.",
       links: { linkedin: "", github: "", scholar: "", website: "" }
     },

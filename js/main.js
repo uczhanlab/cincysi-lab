@@ -41,26 +41,8 @@
     drZhan:   `<svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>`
   };
 
-  // Shield logo SVG (inline, UC Red)
-  const SHIELD_SVG = `
-    <svg width="34" height="38" viewBox="0 0 72 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M36 2 L68 14 L68 44 C68 60 52 73 36 78 C20 73 4 60 4 44 L4 14 Z" fill="#E00122"/>
-      <path d="M36 8 L63 18 L63 44 C63 57 49 69 36 73 C23 69 9 57 9 44 L9 18 Z" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="1.5"/>
-      <g stroke="rgba(255,255,255,.32)" stroke-width="1.2" stroke-linecap="round">
-        <line x1="36" y1="22" x2="22" y2="40"/>
-        <line x1="36" y1="22" x2="50" y2="40"/>
-        <line x1="22" y1="40" x2="36" y2="58"/>
-        <line x1="50" y1="40" x2="36" y2="58"/>
-        <line x1="22" y1="40" x2="50" y2="40"/>
-      </g>
-      <circle cx="36" cy="22" r="3.5" fill="rgba(255,255,255,.9)"/>
-      <circle cx="22" cy="40" r="2.5" fill="rgba(255,255,255,.65)"/>
-      <circle cx="50" cy="40" r="2.5" fill="rgba(255,255,255,.65)"/>
-      <circle cx="36" cy="58" r="3.5" fill="rgba(255,255,255,.9)"/>
-      <text x="36" y="44" text-anchor="middle" dominant-baseline="middle"
-        font-family="Inter, system-ui, sans-serif"
-        font-weight="700" font-size="20" fill="white" letter-spacing="1">SI</text>
-    </svg>`;
+  // Shield logo SVG — replaced by logo.png
+  // const SHIELD_SVG = `...`;
 
   // ---------- shared chrome ----------
   function renderHeader() {
@@ -79,9 +61,9 @@
       <header class="bg-coal text-white sticky top-0 z-40 border-b border-white/10">
         <div class="max-w-6xl mx-auto px-5 sm:px-8 py-3 flex items-center justify-between gap-6">
           <a href="index.html" class="flex items-center gap-3 shrink-0" aria-label="CincySI Lab home">
-            ${SHIELD_SVG}
+            <img src="images/CincySI_Logo.png" alt="" style="height:40px;width:40px;object-fit:cover;border-radius:6px;">
             <div class="leading-tight">
-              <span class="block text-base font-bold tracking-tight">Cincy<span class="text-red">SI</span></span>
+              <span class="block text-lg font-black tracking-tight">Cincy<span class="text-red">SI</span></span>
               <span class="block text-[10px] tracking-widest uppercase text-white/50 font-medium">Super Intelligence Lab</span>
             </div>
           </a>
@@ -110,7 +92,7 @@
         <div class="max-w-6xl mx-auto px-5 sm:px-8 py-10 grid gap-8 md:grid-cols-[1fr_auto]">
           <div>
             <div class="flex items-center gap-3 mb-3">
-              ${SHIELD_SVG}
+              <img src="images/CincySI_Logo.png" alt="" style="height:40px;width:40px;object-fit:cover;border-radius:6px;">
               <div>
                 <p class="font-bold text-base">Cincy<span class="text-red">SI</span> Lab</p>
                 <p class="text-xs text-white/50">${esc(D.lab.institution)}</p>
@@ -214,29 +196,40 @@
           .filter(([, url]) => url)
           .map(([k, url]) => `
             <a href="${esc(url)}" target="_blank" rel="noopener" aria-label="${esc(m.name)} on ${esc(k)}"
-               class="grid h-8 w-8 place-items-center rounded-full border border-border text-muted hover:border-red hover:text-red transition-colors">
+               class="grid h-9 w-9 place-items-center rounded-xl bg-silver text-muted hover:bg-red hover:text-white transition-colors">
               ${ICONS[k] || ICONS.website}
             </a>`).join('');
         const email = m.email
           ? `<a href="mailto:${esc(m.email)}" aria-label="Email ${esc(m.name)}"
-               class="grid h-8 w-8 place-items-center rounded-full border border-border text-muted hover:border-red hover:text-red transition-colors">
+               class="grid h-9 w-9 place-items-center rounded-xl bg-silver text-muted hover:bg-red hover:text-white transition-colors">
                ${ICONS.email}
              </a>`
           : '';
         const isPI = m.role === 'Principal Investigator';
+        // Split focus into tags if comma-separated, else show as single tag
+        const focusTags = m.focus
+          ? m.focus.split(',').map(t => t.trim()).filter(Boolean)
+          : [];
+        const avatar = m.photo
+          ? `<img src="${esc(m.photo)}" alt="Photo of ${esc(m.name)}"
+                  class="h-full w-full object-cover object-top" onerror="this.parentElement.innerHTML='<span class=\'text-2xl font-bold text-white/40\'>${esc(m.name.split(' ').map(w=>w[0]).join('').slice(0,2))}</span>'">`
+          : `<span class="text-2xl font-bold text-white/40">${esc(m.name.split(' ').map(w=>w[0]).join('').slice(0,2))}</span>`;
         return `
-          <article class="flex flex-col overflow-hidden rounded-xl bg-white border border-border ${isPI ? 'ring-2 ring-red/30' : ''}">
-            <div class="relative bg-silver ${isPI ? 'aspect-[4/3]' : 'aspect-square'}">
-              <span class="absolute inset-0 grid place-items-center text-xs text-muted">Photo</span>
-              ${m.photo ? `<img src="${esc(m.photo)}" alt="Photo of ${esc(m.name)}" class="absolute inset-0 h-full w-full object-cover" onerror="this.remove()">` : ''}
-              ${isPI ? `<span class="absolute top-3 left-3 rounded-full bg-red px-2.5 py-0.5 text-[11px] font-semibold text-white">Principal Investigator</span>` : ''}
+          <article class="flex flex-col items-center text-center rounded-2xl bg-coal border ${isPI ? 'border-red/40' : 'border-white/10'} p-6 hover:border-red/30 transition-colors">
+            <!-- Avatar -->
+            <div class="h-24 w-24 rounded-full overflow-hidden bg-white/10 ring-2 ${isPI ? 'ring-red' : 'ring-white/20'} grid place-items-center mb-4 shrink-0">
+              ${avatar}
             </div>
-            <div class="flex flex-1 flex-col p-5">
-              <p class="text-xs font-semibold uppercase tracking-wider text-red mb-1">${esc(m.role)}</p>
-              <h3 class="font-semibold text-ink text-lg">${esc(m.name)}</h3>
-              <p class="mt-2 flex-1 text-sm text-muted leading-relaxed">${esc(m.focus)}</p>
-              <div class="mt-4 flex gap-2">${email}${social}</div>
-            </div>
+            <!-- Name & role -->
+            <h3 class="font-semibold text-ink text-base leading-snug">${esc(m.name)}</h3>
+            <p class="mt-1 text-xs font-medium text-red uppercase tracking-wider">${esc(m.role)}</p>
+            <!-- Focus tags -->
+            ${focusTags.length ? `
+              <div class="mt-3 flex flex-wrap justify-center gap-1.5">
+                ${focusTags.map(t => `<span class="rounded-md bg-silver border border-border px-2.5 py-0.5 text-[11px] text-muted">${esc(t)}</span>`).join('')}
+              </div>` : ''}
+            <!-- Social links -->
+            ${(email || social) ? `<div class="mt-4 flex gap-2 justify-center">${email}${social}</div>` : ''}
           </article>`;
       }).join('');
     },
