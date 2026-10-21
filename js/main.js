@@ -212,7 +212,7 @@
 
   return `
     <figure class="carousel-wrap overflow-hidden rounded-2xl bg-coal border border-border">
-      <div class="relative aspect-[21/9] w-full min-h-[220px]">
+      <div class="relative aspect-[4/3] w-full">
         ${slides}
       </div>
       <div class="flex items-center justify-center gap-2 py-3 border-t border-white/10 bg-coal">
