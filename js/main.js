@@ -61,7 +61,7 @@
       <header class="bg-coal text-white sticky top-0 z-40 border-b border-white/10">
         <div class="max-w-6xl mx-auto px-5 sm:px-8 py-3 flex items-center justify-between gap-6">
           <a href="index.html" class="flex items-center gap-3 shrink-0" aria-label="CincySI Lab home">
-            <img src="images/CincySI_Logo.png" alt="" style="height:40px;width:40px;object-fit:cover;border-radius:6px;">
+            <img src="images/CincySI lab logo.png" alt="" style="height:40px;width:40px;object-fit:cover;border-radius:6px;">
             <div class="leading-tight">
               <span class="block text-lg font-black tracking-tight">Cincy<span class="text-red">SI</span></span>
               <span class="block text-[10px] tracking-widest uppercase text-white/50 font-medium">Super Intelligence Lab</span>
@@ -172,21 +172,57 @@
     },
 
     // Group photo
-    'group-photo'() {
-      const g = D.groupPhoto;
-      const hasImg = g && g.src;
-      return `
-        <figure class="overflow-hidden rounded-2xl bg-coal border border-border">
-          <div class="relative aspect-[21/9] w-full min-h-[200px] grid place-items-center">
-            ${hasImg ? `<img src="${esc(g.src)}" alt="${esc(g.caption)}" class="absolute inset-0 h-full w-full object-cover" onerror="this.remove()">` : ''}
-            <div class="text-center text-white/50 px-6 ${hasImg ? 'hidden' : ''}">
-              <p class="text-lg font-medium text-white/70">Group Photo</p>
-              <p class="mt-1 text-sm">Add images/group-photo.jpg to show a photo here</p>
-            </div>
-          </div>
-          ${g && g.caption ? `<figcaption class="px-6 py-3 text-sm text-white/60 border-t border-white/10">${esc(g.caption)}</figcaption>` : ''}
-        </figure>`;
-    },
+'group-photo'() {
+  const photos = D.groupPhotos;
+  if (!photos || !photos.length) return `
+    <figure class="overflow-hidden rounded-2xl bg-coal border border-border">
+      <div class="relative aspect-[21/9] w-full grid place-items-center">
+        <p class="text-white/50 text-sm">Add group photos in js/data.js</p>
+      </div>
+    </figure>`;
+
+  const slides = photos.map((p, i) => `
+    <div class="carousel-slide absolute inset-0 transition-opacity duration-700 ${i === 0 ? 'opacity-100' : 'opacity-0'}">
+      <img src="${esc(p.src)}" alt="${esc(p.caption)}"
+           class="h-full w-full object-cover" onerror="this.parentElement.style.display='none'">
+      <div class="absolute bottom-0 left-0 right-0 px-6 py-3 bg-gradient-to-t from-black/60 to-transparent">
+        <p class="text-sm text-white/80">${esc(p.caption)}</p>
+      </div>
+    </div>`).join('');
+
+  const dots = photos.map((_, i) => `
+    <button class="carousel-dot h-1.5 w-6 rounded-full transition-all ${i === 0 ? 'bg-white' : 'bg-white/30'}"
+            data-index="${i}" aria-label="Photo ${i + 1}"></button>`).join('');
+
+  setTimeout(() => {
+    const wrap = document.querySelector('.carousel-wrap');
+    if (!wrap) return;
+    const allSlides = wrap.querySelectorAll('.carousel-slide');
+    const allDots   = wrap.querySelectorAll('.carousel-dot');
+    let current = 0;
+    function goTo(n) {
+      allSlides[current].classList.replace('opacity-100', 'opacity-0');
+      allDots[current].classList.replace('bg-white', 'bg-white/30');
+      allDots[current].classList.replace('w-6', 'w-1.5');
+      current = (n + allSlides.length) % allSlides.length;
+      allSlides[current].classList.replace('opacity-0', 'opacity-100');
+      allDots[current].classList.replace('bg-white/30', 'bg-white');
+      allDots[current].classList.replace('w-1.5', 'w-6');
+    }
+    allDots.forEach(d => d.addEventListener('click', () => { clearInterval(timer); goTo(+d.dataset.index); timer = setInterval(() => goTo(current + 1), 3000); }));
+    let timer = setInterval(() => goTo(current + 1), 3000);
+  }, 0);
+
+  return `
+    <figure class="carousel-wrap overflow-hidden rounded-2xl bg-coal border border-border">
+      <div class="relative aspect-[21/9] w-full min-h-[220px]">
+        ${slides}
+      </div>
+      <div class="flex items-center justify-center gap-2 py-3 border-t border-white/10 bg-coal">
+        ${dots}
+      </div>
+    </figure>`;
+},
 
     // Member cards
     members() {

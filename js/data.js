@@ -103,10 +103,11 @@ window.SITE_DATA = {
   // -------------------------------------------------------------------
   // GROUP PHOTO. Leave `src` empty to show the placeholder card.
   // -------------------------------------------------------------------
-  groupPhoto: {
-    src: "images/group-photo.jpg",
-    caption: "CincySI Lab, University of Cincinnati"
-  },
+groupPhotos: [
+  { src: "images/GrpPic1.jpeg", caption: "CincySI Research Building, Fall 2026" },
+  { src: "images/GrpPic2.jpeg", caption: "Digital Futures 5th floor workspace, Fall 2026" },
+  { src: "images/GrpPic3.jpeg", caption: "Research Building, 2025" }
+],
 
   // -------------------------------------------------------------------
   // PROJECTS. Representative funded work from Dr. Zhan's UC Research
