@@ -61,7 +61,7 @@
       <header class="bg-coal text-white sticky top-0 z-40 border-b border-white/10">
         <div class="max-w-6xl mx-auto px-5 sm:px-8 py-3 flex items-center justify-between gap-6">
           <a href="index.html" class="flex items-center gap-3 shrink-0" aria-label="CincySI Lab home">
-            <img src="images/CincySI lab logo.png" alt="" style="height:40px;width:40px;object-fit:cover;border-radius:6px;">
+            <img src="images/CincySI_Lab final Logo.png" alt="" style="height:40px;width:40px;object-fit:cover;border-radius:6px;">
             <div class="leading-tight">
               <span class="block text-lg font-black tracking-tight">Cincy<span class="text-red">SI</span></span>
               <span class="block text-[10px] tracking-widest uppercase text-white/50 font-medium">Super Intelligence Lab</span>
@@ -92,7 +92,7 @@
         <div class="max-w-6xl mx-auto px-5 sm:px-8 py-10 grid gap-8 md:grid-cols-[1fr_auto]">
           <div>
             <div class="flex items-center gap-3 mb-3">
-              <img src="images/CincySI_Logo.png" alt="" style="height:40px;width:40px;object-fit:cover;border-radius:6px;">
+              <img src="images/CincySI_Lab final Logo.png" alt="" style="height:40px;width:40px;object-fit:cover;border-radius:6px;">
               <div>
                 <p class="font-bold text-base">Cincy<span class="text-red">SI</span> Lab</p>
                 <p class="text-xs text-white/50">${esc(D.lab.institution)}</p>
@@ -176,7 +176,7 @@
   const photos = D.groupPhotos;
   if (!photos || !photos.length) return `
     <figure class="overflow-hidden rounded-2xl bg-coal border border-border">
-      <div class="relative aspect-[21/9] w-full grid place-items-center">
+      <div class="relative aspect-[3/2] w-full grid place-items-center">
         <p class="text-white/50 text-sm">Add group photos in js/data.js</p>
       </div>
     </figure>`;
@@ -184,38 +184,27 @@
   const slides = photos.map((p, i) => `
     <div class="carousel-slide absolute inset-0 transition-opacity duration-700 ${i === 0 ? 'opacity-100' : 'opacity-0'}">
       <img src="${esc(p.src)}" alt="${esc(p.caption)}"
-           class="h-full w-full object-contain" onerror="this.parentElement.style.display='none'">
+           class="h-full w-full object-cover">
     </div>`).join('');
-
-  const dots = photos.map((_, i) => `
-    <button class="carousel-dot h-1.5 w-6 rounded-full transition-all ${i === 0 ? 'bg-white' : 'bg-white/30'}"
-            data-index="${i}" aria-label="Photo ${i + 1}"></button>`).join('');
 
   setTimeout(() => {
     const wrap = document.querySelector('.carousel-wrap');
     if (!wrap) return;
     const allSlides = wrap.querySelectorAll('.carousel-slide');
-    const allDots   = wrap.querySelectorAll('.carousel-dot');
     let current = 0;
     function goTo(n) {
       allSlides[current].classList.replace('opacity-100', 'opacity-0');
-      allDots[current].classList.replace('bg-white', 'bg-white/30');
-      allDots[current].classList.replace('w-6', 'w-1.5');
       current = (n + allSlides.length) % allSlides.length;
       allSlides[current].classList.replace('opacity-0', 'opacity-100');
-      allDots[current].classList.replace('bg-white/30', 'bg-white');
-      allDots[current].classList.replace('w-1.5', 'w-6');
     }
-    allDots.forEach(d => d.addEventListener('click', () => { clearInterval(timer); goTo(+d.dataset.index); timer = setInterval(() => goTo(current + 1), 3000); }));
-    let timer = setInterval(() => goTo(current + 1), 3000);
+    setInterval(() => goTo(current + 1), 3000);
   }, 0);
 
   return `
-    <figure class="carousel-wrap overflow-hidden rounded-2xl bg-coal border border-border">
+    <figure class="carousel-wrap overflow-hidden rounded-2xl border border-border">
       <div class="relative aspect-[3/2] w-full">
         ${slides}
       </div>
-  
     </figure>`;
 },
 
@@ -246,13 +235,13 @@
                   class="h-full w-full object-cover object-top" onerror="this.parentElement.innerHTML='<span class=\'text-2xl font-bold text-white/40\'>${esc(m.name.split(' ').map(w=>w[0]).join('').slice(0,2))}</span>'">`
           : `<span class="text-2xl font-bold text-white/40">${esc(m.name.split(' ').map(w=>w[0]).join('').slice(0,2))}</span>`;
         return `
-          <article class="flex flex-col items-center text-center rounded-2xl bg-coal border ${isPI ? 'border-red/40' : 'border-white/10'} p-6 hover:border-red/30 transition-colors">
+          <article class="flex flex-col items-center text-center rounded-xl bg-white border border-border p-6 hover:shadow-md transition-shadow ${isPI ? 'ring-1 ring-red/40' : ''}">
             <!-- Avatar -->
-            <div class="h-24 w-24 rounded-full overflow-hidden bg-white/10 ring-2 ${isPI ? 'ring-red' : 'ring-white/20'} grid place-items-center mb-4 shrink-0">
+            <div class="h-24 w-24 rounded-full overflow-hidden bg-silver ring-2 ${isPI ? 'ring-red' : 'ring-border'} grid place-items-center mb-4 shrink-0">
               ${avatar}
             </div>
             <!-- Name & role -->
-            <h3 class="font-semibold text-ink text-base leading-snug">${esc(m.name)}</h3>
+            <h3 class="font-bold text-ink text-base leading-snug">${esc(m.name)}</h3>
             <p class="mt-1 text-xs font-medium text-red uppercase tracking-wider">${esc(m.role)}</p>
             <!-- Focus tags -->
             ${focusTags.length ? `

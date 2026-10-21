@@ -76,7 +76,7 @@ window.SITE_DATA = {
     email:    { label: "Contact the lab",  url: "mailto:justin.zhan@uc.edu" },
     linkedin: { label: "LinkedIn",         url: "#TODO" },
     github:   { label: "GitHub",           url: "#TODO" },
-    drZhan:   { label: "Dr. Zhan's site",  url: "https://drjustinzhan.com" }
+    drZhan:   { label: "Dr. Zhan's site",  url: "https://justinzhan.com" }
   },
 
   // -------------------------------------------------------------------
@@ -106,7 +106,6 @@ window.SITE_DATA = {
 groupPhotos: [
   { src: "images/GrpPic1.jpeg", caption: "CincySI Research Building, Fall 2026" },
   { src: "images/GrpPic2.jpeg", caption: "Digital Futures 5th floor workspace, Fall 2026" },
-  { src: "images/GrpPic3.jpeg", caption: "Research Building, 2025" }
 ],
 
   // -------------------------------------------------------------------
@@ -156,7 +155,7 @@ groupPhotos: [
       photo: "images/Dr.Zhan2.jpeg",
       email: "justin.zhan@uc.edu",
       focus: "Data Science, Artificial Intelligence, Blockchain, Biomedical Informatics, Social Computing",
-      links: { linkedin: "", github: "", scholar: "", website: "https://drjustinzhan.com" }
+      links: { linkedin: "", github: "", scholar: "", website: "https://justinzhan.com" }
     },
     {
       name: "Ritesh Janga",
@@ -164,13 +163,21 @@ groupPhotos: [
       photo: "images/Ritesh.jpeg",
       email: "jangarh@mail.uc.edu",
       focus: "Placeholder research focus statement.",
-      links: { linkedin: "", github: "", scholar: "", website: "" }
+      links: { linkedin: "https://www.linkedin.com/in/ritesh-07j2002?utm_source=share_via&utm_content=profile&utm_medium=member_android", github: "", scholar: "https://scholar.google.com/citations?user=kgfbxRUAAAAJ&hl=en", website: "" }
     },
     {
       name: "Yagna Manasa Boyapati",
       role: "Ph.D. Student",
       photo: "images/Manasa.jpeg",
       email: "boyapaya@mail.uc.edu",
+      focus: "Federated Learning, Large Language Models, Privacy-Preserving AI",
+      links: { linkedin: "https://www.linkedin.com/in/boyapati-yagna-manasa/", github: "https://github.com/manasa2107", scholar: "https://scholar.google.com/citations?user=uHR64QcAAAAJ&hl=en&oi=ao", website: "https://manasa2107.github.io/" }
+    },
+    {
+      name: "Student Name",
+      role: "Postdoctoral Researcher",
+      photo: "",
+      email: "",
       focus: "Placeholder research focus statement.",
       links: { linkedin: "", github: "", scholar: "", website: "" }
     },
@@ -181,7 +188,143 @@ groupPhotos: [
       email: "",
       focus: "Placeholder research focus statement.",
       links: { linkedin: "", github: "", scholar: "", website: "" }
-    }
+    },
+    {
+      name: "Mamun, Abdullah Al",
+      role: "Postdoctoral Researcher",
+      photo: "",
+      email: "",
+      focus: "Placeholder research focus statement.",
+      links: { linkedin: "", github: "", scholar: "", website: "" }
+    },
+    {
+      name: "Student Name",
+      role: "Postdoctoral Researcher",
+      photo: "",
+      email: "",
+      focus: "Placeholder research focus statement.",
+      links: { linkedin: "", github: "", scholar: "", website: "" }
+    },
+       {
+      name: "Student Name",
+      role: "Postdoctoral Researcher",
+      photo: "",
+      email: "",
+      focus: "Placeholder research focus statement.",
+      links: { linkedin: "", github: "", scholar: "", website: "" }
+    },
+       {
+      name: "Student Name",
+      role: "Postdoctoral Researcher",
+      photo: "",
+      email: "",
+      focus: "Placeholder research focus statement.",
+      links: { linkedin: "", github: "", scholar: "", website: "" }
+    },
+       {
+      name: "Student Name",
+      role: "Postdoctoral Researcher",
+      photo: "",
+      email: "",
+      focus: "Placeholder research focus statement.",
+      links: { linkedin: "", github: "", scholar: "", website: "" }
+    },
+       {
+      name: "Student Name",
+      role: "Postdoctoral Researcher",
+      photo: "",
+      email: "",
+      focus: "Placeholder research focus statement.",
+      links: { linkedin: "", github: "", scholar: "", website: "" }
+    },
+       {
+      name: "Student Name",
+      role: "Postdoctoral Researcher",
+      photo: "",
+      email: "",
+      focus: "Placeholder research focus statement.",
+      links: { linkedin: "", github: "", scholar: "", website: "" }
+    },
+       {
+      name: "Student Name",
+      role: "Postdoctoral Researcher",
+      photo: "",
+      email: "",
+      focus: "Placeholder research focus statement.",
+      links: { linkedin: "", github: "", scholar: "", website: "" }
+    },
+       {
+      name: "Student Name",
+      role: "Postdoctoral Researcher",
+      photo: "",
+      email: "",
+      focus: "Placeholder research focus statement.",
+      links: { linkedin: "", github: "", scholar: "", website: "" }
+    },
+       {
+      name: "Student Name",
+      role: "Postdoctoral Researcher",
+      photo: "",
+      email: "",
+      focus: "Placeholder research focus statement.",
+      links: { linkedin: "", github: "", scholar: "", website: "" }
+    },
+       {
+      name: "Student Name",
+      role: "Postdoctoral Researcher",
+      photo: "",
+      email: "",
+      focus: "Placeholder research focus statement.",
+      links: { linkedin: "", github: "", scholar: "", website: "" }
+    },
+       {
+      name: "Student Name",
+      role: "Postdoctoral Researcher",
+      photo: "",
+      email: "",
+      focus: "Placeholder research focus statement.",
+      links: { linkedin: "", github: "", scholar: "", website: "" }
+    },
+       {
+      name: "Student Name",
+      role: "Postdoctoral Researcher",
+      photo: "",
+      email: "",
+      focus: "Placeholder research focus statement.",
+      links: { linkedin: "", github: "", scholar: "", website: "" }
+    },
+       {
+      name: "Student Name",
+      role: "Postdoctoral Researcher",
+      photo: "",
+      email: "",
+      focus: "Placeholder research focus statement.",
+      links: { linkedin: "", github: "", scholar: "", website: "" }
+    },
+       {
+      name: "Student Name",
+      role: "Postdoctoral Researcher",
+      photo: "",
+      email: "",
+      focus: "Placeholder research focus statement.",
+      links: { linkedin: "", github: "", scholar: "", website: "" }
+    },
+       {
+      name: "Student Name",
+      role: "Postdoctoral Researcher",
+      photo: "",
+      email: "",
+      focus: "Placeholder research focus statement.",
+      links: { linkedin: "", github: "", scholar: "", website: "" }
+    },
+       {
+      name: "Student Name",
+      role: "Postdoctoral Researcher",
+      photo: "",
+      email: "",
+      focus: "Placeholder research focus statement.",
+      links: { linkedin: "", github: "", scholar: "", website: "" }
+    },
   ],
 
   // -------------------------------------------------------------------
