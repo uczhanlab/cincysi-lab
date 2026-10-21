@@ -184,10 +184,7 @@
   const slides = photos.map((p, i) => `
     <div class="carousel-slide absolute inset-0 transition-opacity duration-700 ${i === 0 ? 'opacity-100' : 'opacity-0'}">
       <img src="${esc(p.src)}" alt="${esc(p.caption)}"
-           class="h-full w-full object-cover" onerror="this.parentElement.style.display='none'">
-      <div class="absolute bottom-0 left-0 right-0 px-6 py-3 bg-gradient-to-t from-black/60 to-transparent">
-        <p class="text-sm text-white/80">${esc(p.caption)}</p>
-      </div>
+           class="h-full w-full object-contain" onerror="this.parentElement.style.display='none'">
     </div>`).join('');
 
   const dots = photos.map((_, i) => `
