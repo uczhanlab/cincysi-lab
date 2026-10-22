@@ -352,18 +352,18 @@ groupPhotos: [
     // -------------------------------------------------------------------
   // LAB TOOLS
   // -------------------------------------------------------------------
-  tools: [
+tools: [
     {
       name: "BearTrack",
       description: "Weekly work reporting portal for lab members to log progress and share updates with Dr. Zhan.",
-      url: "#TODO",
-      tags: ["Internal"]
+      url: "https://beartrack-uc.vercel.app/",
+      tags: []
     },
     {
       name: "BibTeX Verifier",
       description: "Validates academic references to ensure BibTeX entries are accurate and resolvable.",
-      url: "#TODO",
-      tags: ["Research"]
+      url: "https://bibtex-verifier.vercel.app/",
+      tags: []
     }
   ]
 };
