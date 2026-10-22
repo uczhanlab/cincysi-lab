@@ -361,7 +361,7 @@ tools: [
     },
     {
       name: "BibTeX Verifier",
-      description: "Validates academic references to ensure BibTeX entries are accurate and resolvable.",
+      description: "Validates academic references to ensure BibTeX entries are accurate and resolvable. It allows users to upload a .bib file or paste single reference and checks the entries against online databases to verify their correctness.",
       url: "https://bibtex-verifier.vercel.app/",
       tags: []
     }
