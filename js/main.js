@@ -280,6 +280,31 @@
               </li>`).join('')}
           </ul>
         </section>`).join('');
+    },
+        // Lab Tools
+    tools() {
+      if (!D.tools || !D.tools.length) return emptyState('No tools listed yet.');
+      return D.tools.map(t => `
+        <article class="bg-white rounded-xl border border-border p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col gap-4">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <h3 class="text-lg font-bold text-ink">${esc(t.name)}</h3>
+              <p class="mt-1 text-sm text-muted leading-relaxed">${esc(t.description)}</p>
+            </div>
+            ${t.tags && t.tags.length ? `
+              <div class="flex flex-wrap gap-1.5 shrink-0">
+                ${t.tags.map(tag => `<span class="rounded-full bg-silver border border-border px-2.5 py-0.5 text-[11px] font-medium text-muted">${esc(tag)}</span>`).join('')}
+              </div>` : ''}
+          </div>
+          ${!isTodo(t.url) ? `
+            <a href="${esc(t.url)}" target="_blank" rel="noopener"
+               class="self-start rounded-lg bg-red px-4 py-2 text-sm font-semibold text-white hover:bg-deep transition-colors">
+              Open tool ↗
+            </a>` : `
+            <span class="self-start rounded-lg bg-silver border border-border px-4 py-2 text-sm font-medium text-muted cursor-not-allowed">
+              Coming soon
+            </span>`}
+        </article>`).join('');
     }
   };
 

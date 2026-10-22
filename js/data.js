@@ -66,7 +66,8 @@ window.SITE_DATA = {
     { label: "Home",         href: "index.html" },
     { label: "Research",     href: "research.html" },
     { label: "Members",      href: "members.html" },
-    { label: "Publications", href: "publications.html" }
+    { label: "Publications", href: "publications.html" },
+    { label: "Lab Tools",    href: "tools.html" }
   ],
 
   // -------------------------------------------------------------------
@@ -346,6 +347,23 @@ groupPhotos: [
       venue: "Conference name",
       link: "",
       type: "Conference"
+    }
+  ],
+    // -------------------------------------------------------------------
+  // LAB TOOLS
+  // -------------------------------------------------------------------
+  tools: [
+    {
+      name: "BearTrack",
+      description: "Weekly work reporting portal for lab members to log progress and share updates with Dr. Zhan.",
+      url: "#TODO",
+      tags: ["Internal"]
+    },
+    {
+      name: "BibTeX Verifier",
+      description: "Validates academic references to ensure BibTeX entries are accurate and resolvable.",
+      url: "#TODO",
+      tags: ["Research"]
     }
   ]
 };
