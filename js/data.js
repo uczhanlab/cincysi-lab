@@ -358,18 +358,21 @@ tools: [
       name: "BearTrack",
       description: "Weekly work reporting portal for lab members to log progress and share updates with Dr. Zhan.",
       url: "https://beartrack.si",
+      credit: { label: "Developed by", name: "Ritesh Janga" },
       tags: []
     },
     {
       name: "BibTeX Verifier",
       description: "Validates academic references to ensure BibTeX entries are accurate and resolvable. It allows users to upload a .bib file or paste single reference and checks the entries against online databases to verify their correctness.",
       url: "https://bibtex-verifier.vercel.app/",
+      credit: { label: "Enhanced by", name: "Ritesh Janga" },
       tags: []
     },
     {
       name: "Citation Checker",
       description: "Verifies references in academic manuscripts before submission. Upload a paper or paste a reference list and it checks DOIs, authors, journals, and publication years against published records, flagging invalid citations and duplicates.",
       url: "https://citationchecker.jp/",
+      credit: { label: "Recommended by", name: "Gaurab Baral" },
       tags: []
     }
   ]
