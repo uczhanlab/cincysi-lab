@@ -106,7 +106,7 @@ window.SITE_DATA = {
   // -------------------------------------------------------------------
 groupPhotos: [
   { src: "images/GrpPic1.jpeg", caption: "CincySI Research Building, Fall 2026" },
-  { src: "images/GrpPic2.jpeg", caption: "Digital Futures 5th floor workspace, Fall 2026" },
+  { src: "images/GrpPic3.jpg", caption: "Digital Futures 5th floor workspace, Fall 2026" },
 ],
 
   // -------------------------------------------------------------------
@@ -249,7 +249,7 @@ groupPhotos: [
     {
       name: "Kim Anh Phung",
       role: "Ph.D. Student",
-      photo: "images/members/Kim Anh Phung.png",
+      photo: "images/members/Kim Ahn Phung.png",
       email: "phungkh@mail.uc.edu",
       focus: "Computer Vision, Computational Biology",
       links: { linkedin: "", github: "", scholar: "", website: "" }
@@ -347,6 +347,12 @@ tools: [
       name: "BibTeX Verifier",
       description: "Validates academic references to ensure BibTeX entries are accurate and resolvable. It allows users to upload a .bib file or paste single reference and checks the entries against online databases to verify their correctness.",
       url: "https://bibtex-verifier.vercel.app/",
+      tags: []
+    },
+    {
+      name: "Citation Checker",
+      description: "Verifies references in academic manuscripts before submission. Upload a paper or paste a reference list and it checks DOIs, authors, journals, and publication years against published records — flagging invalid citations and duplicates.",
+      url: "https://citationchecker.jp/",
       tags: []
     }
   ]
