@@ -159,12 +159,12 @@ groupPhotos: [
       links: { linkedin: "https://www.linkedin.com/in/justin-zhan-366981256", github: "", scholar: "https://scholar.google.com/citations?user=3klqaJMAAAAJ&hl=en", website: "https://justinzhan.com" }
     },
     {
-      name: "Ritesh Janga",
+      name: "Gaurab Baral",
       role: "Ph.D. Student",
-      photo: "images/members/Ritesh.jpeg",
-      email: "jangarh@mail.uc.edu",
-      focus: "Placeholder research focus statement.",
-      links: { linkedin: "https://www.linkedin.com/in/ritesh-07j2002?utm_source=share_via&utm_content=profile&utm_medium=member_android", github: "", scholar: "https://scholar.google.com/citations?user=kgfbxRUAAAAJ&hl=en", website: "" }
+      photo: "images/members/Gaurab Baral.jpg",
+      email: "baralgb@uc.edu",
+      focus: "NLP, AI, Computer Vision",
+      links: { linkedin: "https://www.linkedin.com/in/gaurab-baral-991333216/", github: "https://github.com/TempGaurab", scholar: "https://scholar.google.com/citations?user=N0TDR9AAAAAJ&hl=en&oi=ao", website: "https://tempgaurab.github.io/TempGaurab/" }
     },
     {
       name: "Yagna Manasa Boyapati",
@@ -175,68 +175,36 @@ groupPhotos: [
       links: { linkedin: "https://www.linkedin.com/in/boyapati-yagna-manasa/", github: "https://github.com/manasa2107", scholar: "https://scholar.google.com/citations?user=uHR64QcAAAAJ&hl=en&oi=ao", website: "https://manasa2107.github.io/" }
     },
     {
-      name: "Gaurab Baral",
+      name: "Prissha Chawla",
       role: "Ph.D. Student",
-      photo: "images/members/Gaurab Baral.jpg",
-      email: "baralgb@uc.edu",
-      focus: "NLP, AI, Computer Vision",
-      links: { linkedin: "https://www.linkedin.com/in/gaurab-baral-991333216/", github: "https://github.com/TempGaurab", scholar: "https://scholar.google.com/citations?user=N0TDR9AAAAAJ&hl=en&oi=ao", website: "https://tempgaurab.github.io/TempGaurab/" }
+      photo: "images/members/Prissha Chawla.jpg",
+      email: "chawlaps@mail.uc.edu",
+      focus: "Prognostics, Machine Learning, Mechanical/Aerospace Applications",
+      links: { linkedin: "https://www.linkedin.com/in/prisshachawla/", github: "", scholar: "", website: "" }
     },
     {
-      name: "Shukun Yang",
-      role: "Ph.D. Student",
-      photo: "images/members/shukun yang.jpg",
-      email: "yang3sk@mail.uc.edu",
-      focus: "AI, Bioinformatics, Complex Network",
-      links: { linkedin: "", github: "", scholar: "", website: "" }
-    },
-    {
-      name: "Mansurbek Satarov",
-      role: "Ph.D. Student",
-      photo: "images/members/Mansurbek Satarov.jpg",
-      email: "sataromk@mail.uc.edu",
-      focus: "AI, Machine Learning, LLM Safety, Trustworthy AI, Agentic AI, NLP, Knowledge Graphs, Biomedical Informatics",
-      links: { linkedin: "https://www.linkedin.com/in/mansurbek", github: "https://github.com/MansurPro", scholar: "https://scholar.google.com/citations?user=4L5_3fQAAAAJ", website: "https://mansurpro.netlify.app/" }
-    },
-    {
-      name: "Du Nguyen",
+      name: "Arundhathi Dev",
       role: "Master's Student",
-      photo: "images/members/Du Nguyen.jpg",
-      email: "nguye2d6@mail.uc.edu",
-      focus: "Emotion Recognition, Data Science, LLM Evaluation",
-      links: { linkedin: "https://www.linkedin.com/in/duquangnguyen/", github: "https://github.com/dunguyenforever", scholar: "", website: "" }
+      photo: "images/members/Arundhathi Dev.jpg",
+      email: "devai@mail.uc.edu",
+      focus: "AI Inference, Performance Optimization, HW/SW Co-Design",
+      links: { linkedin: "https://www.linkedin.com/in/devaru-ai/", github: "https://github.com/devaru-ai", scholar: "https://scholar.google.com/citations?user=mrtOLIQAAAAJ", website: "https://arundhathidev.me/" }
     },
     {
-      name: "Monirul I. Mahmud",
-      role: "Ph.D. Student",
-      photo: "images/members/Monirul I. Mahmud.png",
-      email: "mahmudmi@mail.uc.edu",
-      focus: "Efficient LLM, LLM Security, Trustworthy AI",
-      links: { linkedin: "https://www.linkedin.com/in/monirul-islam-mahmud/", github: "https://github.com/Monirules", scholar: "https://scholar.google.com/citations?user=9pLzr9UAAAAJ", website: "https://monirules.github.io/" }
-    },
-    {
-      name: "Kim Anh Phung",
-      role: "Ph.D. Student",
-      photo: "images/members/Kim Anh Phung.jpg",
-      email: "phungkh@mail.uc.edu",
-      focus: "Computer Vision, Computational Biology",
-      links: { linkedin: "", github: "", scholar: "", website: "" }
-    },
-    {
-      name: "Adwitiya Shukla",
+      name: "Sriharsha Itha",
       role: "Master's Student",
-      photo: "images/members/adwitiya shukla.jpg",
-      email: "shuklaaw@mail.uc.edu",
-      focus: "AI, ML, Deep Learning, LLMs, Clinical NLP, Medical Coding",
-      links: { linkedin: "https://www.linkedin.com/in/adwitiya-shukla-94109a264", github: "https://github.com/adwitiyashukla", scholar: "https://scholar.google.com/citations?user=kGfPJiwAAAAJ", website: "https://adwitiyashukla.com/" }
+      photo: "images/members/Sriharsha Itha.jpg",
+      email: "ithasa@mail.uc.edu",
+      focus: "AI, LLM",
+      links: { linkedin: "https://www.linkedin.com/in/harsha-i-909696221", github: "", scholar: "", website: "" }
     },
     {
-      name: "Md Shihab Reza",
+      name: "Ritesh Janga",
       role: "Ph.D. Student",
-      photo: "images/members/Shihab Reza.jpg",
-      email: "rezamb@mail.uc.edu",
-      focus: "LLMs, LLM Security, Trustworthy AI, AI Forensics, Machine Learning",
-      links: { linkedin: "http://www.linkedin.com/in/shihabrezaadit", github: "https://github.com/ShihabRezaAdit", scholar: "https://scholar.google.com/citations?user=7OiPbxwAAAAJ", website: "https://sites.google.com/view/shihabreza/home" }
+      photo: "images/members/Ritesh.jpeg",
+      email: "jangarh@mail.uc.edu",
+      focus: "Reliable and efficient LLM systems, Agentic AI and selective re-execution, Retrieval-augmented generation, Privacy-preserving and federated learning",
+      links: { linkedin: "https://www.linkedin.com/in/ritesh-07j2002?utm_source=share_via&utm_content=profile&utm_medium=member_android", github: "https://github.com/Ritesh778", scholar: "https://scholar.google.com/citations?user=kgfbxRUAAAAJ&hl=en", website: "https://ritesh778.github.io/" }
     },
     {
       name: "Hoang Nhat Duy Le",
@@ -255,36 +223,12 @@ groupPhotos: [
       links: { linkedin: "https://www.linkedin.com/in/yang-lu-73a87033/", github: "", scholar: "https://scholar.google.com/citations?user=xpP7NfsAAAAJ&hl=en", website: "" }
     },
     {
-      name: "Hanniel Shih",
+      name: "Monirul I. Mahmud",
       role: "Ph.D. Student",
-      photo: "images/members/Hanniel Shih.jpg",
-      email: "shihhh@mail.uc.edu",
-      focus: "Trustworthy AI, AI Safety, Medical Informatics, Data Science",
-      links: { linkedin: "https://www.linkedin.com/in/hannielshih", github: "", scholar: "https://scholar.google.com/citations?user=WIxZ7HIAAAAJ&hl=en", website: "" }
-    },
-    {
-      name: "Arundhathi Dev",
-      role: "Master's Student",
-      photo: "images/members/Arundhathi Dev.jpg",
-      email: "devai@mail.uc.edu",
-      focus: "AI Inference, Performance Optimization, HW/SW Co-Design",
-      links: { linkedin: "https://www.linkedin.com/in/devaru-ai/", github: "https://github.com/devaru-ai", scholar: "https://scholar.google.com/citations?user=mrtOLIQAAAAJ", website: "https://arundhathidev.me/" }
-    },
-    {
-      name: "Yueh Tang",
-      role: "Ph.D. Student",
-      photo: "images/members/Yueh Tang.jpg",
-      email: "tangy9@mail.uc.edu",
-      focus: "LLM Agents, Web Agents, AI Verification, Trustworthy AI, Healthcare AI",
-      links: { linkedin: "https://www.linkedin.com/in/yueh-tang-156116235/", github: "", scholar: "https://scholar.google.com/citations?user=xn8KH0wAAAAJ", website: "" }
-    },
-    {
-      name: "Prissha Chawla",
-      role: "Ph.D. Student",
-      photo: "images/members/Prissha Chawla.jpg",
-      email: "chawlaps@mail.uc.edu",
-      focus: "Prognostics, Machine Learning, Mechanical/Aerospace Applications",
-      links: { linkedin: "https://www.linkedin.com/in/prisshachawla/", github: "", scholar: "", website: "" }
+      photo: "images/members/Monirul I. Mahmud.png",
+      email: "mahmudmi@mail.uc.edu",
+      focus: "Efficient LLM, LLM Security, Trustworthy AI",
+      links: { linkedin: "https://www.linkedin.com/in/monirul-islam-mahmud/", github: "https://github.com/Monirules", scholar: "https://scholar.google.com/citations?user=9pLzr9UAAAAJ", website: "https://monirules.github.io/" }
     },
     {
       name: "Dhathri Sree Monukonda",
@@ -292,6 +236,22 @@ groupPhotos: [
       photo: "images/members/dhathri m.jpg",
       email: "monukode@mail.uc.edu",
       focus: "AI",
+      links: { linkedin: "", github: "", scholar: "", website: "" }
+    },
+    {
+      name: "Du Nguyen",
+      role: "Master's Student",
+      photo: "images/members/Du Nguyen.jpg",
+      email: "nguye2d6@mail.uc.edu",
+      focus: "Emotion Recognition, Data Science, LLM Evaluation",
+      links: { linkedin: "https://www.linkedin.com/in/duquangnguyen/", github: "https://github.com/dunguyenforever", scholar: "", website: "" }
+    },
+    {
+      name: "Kim Anh Phung",
+      role: "Ph.D. Student",
+      photo: "images/members/Kim Anh Phung.jpg",
+      email: "phungkh@mail.uc.edu",
+      focus: "Computer Vision, Computational Biology",
       links: { linkedin: "", github: "", scholar: "", website: "" }
     },
     {
@@ -303,12 +263,52 @@ groupPhotos: [
       links: { linkedin: "https://www.linkedin.com/in/kate-plas-b2b391192/", github: "https://github.com/plask3189", scholar: "https://scholar.google.com/citations?user=MG5Bh_AAAAAJ&hl=en&oi=ao", website: "" }
     },
     {
-      name: "Sriharsha Itha",
+      name: "Md Shihab Reza",
+      role: "Ph.D. Student",
+      photo: "images/members/Shihab Reza.jpg",
+      email: "rezamb@mail.uc.edu",
+      focus: "LLMs, LLM Security, Trustworthy AI, AI Forensics, Machine Learning",
+      links: { linkedin: "http://www.linkedin.com/in/shihabrezaadit", github: "https://github.com/ShihabRezaAdit", scholar: "https://scholar.google.com/citations?user=7OiPbxwAAAAJ", website: "https://sites.google.com/view/shihabreza/home" }
+    },
+    {
+      name: "Mansurbek Satarov",
+      role: "Ph.D. Student",
+      photo: "images/members/Mansurbek Satarov.jpg",
+      email: "sataromk@mail.uc.edu",
+      focus: "AI, Machine Learning, LLM Safety, Trustworthy AI, Agentic AI, NLP, Knowledge Graphs, Biomedical Informatics",
+      links: { linkedin: "https://www.linkedin.com/in/mansurbek", github: "https://github.com/MansurPro", scholar: "https://scholar.google.com/citations?user=4L5_3fQAAAAJ", website: "https://mansurpro.netlify.app/" }
+    },
+    {
+      name: "Hanniel Shih",
+      role: "Ph.D. Student",
+      photo: "images/members/Hanniel Shih.jpg",
+      email: "shihhh@mail.uc.edu",
+      focus: "Trustworthy AI, AI Safety, Medical Informatics, Data Science",
+      links: { linkedin: "https://www.linkedin.com/in/hannielshih", github: "", scholar: "https://scholar.google.com/citations?user=WIxZ7HIAAAAJ&hl=en", website: "" }
+    },
+    {
+      name: "Adwitiya Shukla",
       role: "Master's Student",
-      photo: "images/members/Sriharsha Itha.jpg",
-      email: "ithasa@mail.uc.edu",
-      focus: "AI, LLM",
-      links: { linkedin: "https://www.linkedin.com/in/harsha-i-909696221", github: "", scholar: "", website: "" }
+      photo: "images/members/adwitiya shukla.jpg",
+      email: "shuklaaw@mail.uc.edu",
+      focus: "AI, ML, Deep Learning, LLMs, Clinical NLP, Medical Coding",
+      links: { linkedin: "https://www.linkedin.com/in/adwitiya-shukla-94109a264", github: "https://github.com/adwitiyashukla", scholar: "https://scholar.google.com/citations?user=kGfPJiwAAAAJ", website: "https://adwitiyashukla.com/" }
+    },
+    {
+      name: "Yueh Tang",
+      role: "Ph.D. Student",
+      photo: "images/members/Yueh Tang.jpg",
+      email: "tangy9@mail.uc.edu",
+      focus: "LLM Agents, Web Agents, AI Verification, Trustworthy AI, Healthcare AI",
+      links: { linkedin: "https://www.linkedin.com/in/yueh-tang-156116235/", github: "", scholar: "https://scholar.google.com/citations?user=xn8KH0wAAAAJ", website: "" }
+    },
+    {
+      name: "Shukun Yang",
+      role: "Ph.D. Student",
+      photo: "images/members/shukun yang.jpg",
+      email: "yang3sk@mail.uc.edu",
+      focus: "AI, Bioinformatics, Complex Network",
+      links: { linkedin: "", github: "", scholar: "", website: "" }
     }
   ],
 

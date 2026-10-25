@@ -41,35 +41,70 @@
     drZhan:   `<svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>`
   };
 
-  // Shield logo SVG — replaced by logo.png
-  // const SHIELD_SVG = `...`;
-
   // ---------- shared chrome ----------
   function renderHeader() {
     const el = document.getElementById('site-header');
     if (!el) return;
 
+    const navId = 'main-nav';
     const navLinks = D.nav.map(item => {
       const active = item.href === currentPage;
       const cls = active
         ? 'text-red border-b-2 border-red pb-0.5 font-semibold'
         : 'text-white/70 hover:text-white pb-0.5 border-b-2 border-transparent transition-colors';
-      return `<a href="${esc(item.href)}" class="${cls}" ${active ? 'aria-current="page"' : ''}>${esc(item.label)}</a>`;
+      return `<a href="${esc(item.href)}" class="${cls} whitespace-nowrap" ${active ? 'aria-current="page"' : ''}>${esc(item.label)}</a>`;
     }).join('');
 
     el.innerHTML = `
       <header class="bg-coal text-white sticky top-0 z-40 border-b border-white/10">
-        <div class="max-w-6xl mx-auto px-5 sm:px-8 py-3 flex items-center justify-between gap-6">
-          <a href="index.html" class="flex items-center gap-3 shrink-0" aria-label="CincySI Lab home">
-            <img src="images/CincySI_Lab final Logo.png" alt="" style="height:40px;width:40px;object-fit:cover;border-radius:6px;">
-            <div class="leading-tight">
-              <span class="block text-lg font-black tracking-tight">Cincy<span class="text-red">SI</span></span>
-              <span class="block text-[10px] tracking-widest uppercase text-white/50 font-medium">Super Intelligence Lab</span>
+        <div class="max-w-6xl mx-auto px-4 sm:px-8 py-3 flex items-center justify-between gap-4">
+          <a href="index.html" class="flex items-center gap-2 sm:gap-3 shrink-0 min-w-0" aria-label="CincySI Lab home">
+            <img src="images/CincySI_Lab final Logo.png" alt="" style="height:36px;width:36px;flex-shrink:0;object-fit:cover;border-radius:6px;">
+            <div class="leading-tight min-w-0">
+              <span class="block text-base sm:text-lg font-black tracking-tight">Cincy<span class="text-red">SI</span></span>
+              <span class="hidden sm:block text-[10px] tracking-widest uppercase text-white/50 font-medium">Super Intelligence Lab</span>
             </div>
           </a>
-          <nav class="flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium" aria-label="Primary">${navLinks}</nav>
+          <!-- Hamburger button (mobile only) -->
+          <button id="nav-toggle" aria-controls="${navId}" aria-expanded="false"
+                  class="sm:hidden flex flex-col justify-center items-center gap-1.5 w-8 h-8 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-red shrink-0"
+                  aria-label="Toggle navigation">
+            <span class="block w-5 h-0.5 bg-white transition-transform duration-200 nav-bar-1"></span>
+            <span class="block w-5 h-0.5 bg-white transition-opacity duration-200 nav-bar-2"></span>
+            <span class="block w-5 h-0.5 bg-white transition-transform duration-200 nav-bar-3"></span>
+          </button>
+          <!-- Desktop nav -->
+          <nav id="${navId}" class="hidden sm:flex flex-wrap gap-x-5 gap-y-2 text-sm font-medium" aria-label="Primary">
+            ${navLinks}
+          </nav>
+        </div>
+        <!-- Mobile nav drawer -->
+        <div id="mobile-nav" class="sm:hidden hidden bg-coal border-t border-white/10">
+          <nav class="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-3 text-sm font-medium" aria-label="Mobile">
+            ${navLinks}
+          </nav>
         </div>
       </header>`;
+
+    // Hamburger toggle
+    const btn = document.getElementById('nav-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+    if (btn && mobileNav) {
+      btn.addEventListener('click', () => {
+        const open = mobileNav.classList.toggle('hidden');
+        btn.setAttribute('aria-expanded', String(!open));
+        const [b1, , b3] = btn.querySelectorAll('span');
+        if (!open) {
+          b1.style.transform = 'translateY(8px) rotate(45deg)';
+          b3.style.transform = 'translateY(-8px) rotate(-45deg)';
+          btn.querySelector('.nav-bar-2').style.opacity = '0';
+        } else {
+          b1.style.transform = '';
+          b3.style.transform = '';
+          btn.querySelector('.nav-bar-2').style.opacity = '1';
+        }
+      });
+    }
   }
 
   function renderFooter() {
@@ -89,21 +124,21 @@
 
     el.innerHTML = `
       <footer class="bg-coal text-white mt-auto border-t border-white/10">
-        <div class="max-w-6xl mx-auto px-5 sm:px-8 py-10 grid gap-8 md:grid-cols-[1fr_auto]">
+        <div class="max-w-6xl mx-auto px-4 sm:px-8 py-8 sm:py-10 grid gap-6 sm:gap-8 md:grid-cols-[1fr_auto]">
           <div>
             <div class="flex items-center gap-3 mb-3">
-              <img src="images/CincySI_Lab final Logo.png" alt="" style="height:40px;width:40px;object-fit:cover;border-radius:6px;">
-              <div>
+              <img src="images/CincySI_Lab final Logo.png" alt="" style="height:40px;width:40px;flex-shrink:0;object-fit:cover;border-radius:6px;">
+              <div class="min-w-0">
                 <p class="font-bold text-base">Cincy<span class="text-red">SI</span> Lab</p>
                 <p class="text-xs text-white/50">${esc(D.lab.institution)}</p>
               </div>
             </div>
             <p class="text-sm text-white/60 max-w-md leading-relaxed">${esc(D.lab.tagline)}</p>
           </div>
-          <nav class="flex flex-col gap-3" aria-label="Footer">${items}</nav>
+          <nav class="flex flex-wrap sm:flex-col gap-3" aria-label="Footer">${items}</nav>
         </div>
         <div class="border-t border-white/10">
-          <p class="max-w-6xl mx-auto px-5 sm:px-8 py-4 text-xs text-white/40">
+          <p class="max-w-6xl mx-auto px-4 sm:px-8 py-4 text-xs text-white/40">
             © ${new Date().getFullYear()} ${esc(D.lab.name)} · ${esc(D.lab.institution)}
           </p>
         </div>
@@ -122,13 +157,13 @@
     mission() {
       return `
         <p class="text-xs font-semibold uppercase tracking-[0.2em] text-red">University of Cincinnati</p>
-        <h1 class="mt-4 text-4xl md:text-6xl font-bold leading-tight tracking-tight">
+        <h1 class="mt-4 text-3xl sm:text-4xl md:text-6xl font-bold leading-tight tracking-tight">
           ${esc(D.lab.tagline)}
         </h1>
-        <p class="mt-6 max-w-2xl text-lg text-white/75 leading-relaxed">${esc(D.lab.mission)}</p>
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a href="research.html" class="inline-flex items-center gap-2 rounded-md bg-red px-5 py-2.5 text-sm font-semibold text-white hover:bg-deep transition-colors">Our Research</a>
-          <a href="members.html" class="inline-flex items-center gap-2 rounded-md border border-white/25 px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10 transition-colors">Meet the Team</a>
+        <p class="mt-5 sm:mt-6 max-w-2xl text-base sm:text-lg text-white/75 leading-relaxed">${esc(D.lab.mission)}</p>
+        <div class="mt-6 sm:mt-8 flex flex-wrap gap-3">
+          <a href="research.html" class="inline-flex items-center gap-2 rounded-md bg-red px-4 sm:px-5 py-2.5 text-sm font-semibold text-white hover:bg-deep transition-colors">Our Research</a>
+          <a href="members.html" class="inline-flex items-center gap-2 rounded-md border border-white/25 px-4 sm:px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/10 transition-colors">Meet the Team</a>
         </div>`;
     },
 
@@ -138,12 +173,12 @@
       const items = limit(sorted, el);
       if (!items.length) return emptyState('No announcements yet.');
       return items.map(n => `
-        <article class="py-5 border-b border-border last:border-0">
+        <article class="py-4 sm:py-5 border-b border-border last:border-0">
           <div class="flex flex-wrap items-center gap-2 mb-2">
             <time datetime="${esc(n.date)}" class="text-xs text-muted tabular-nums">${fmtDate(n.date)}</time>
             ${n.tag ? `<span class="rounded-full px-2.5 py-0.5 text-[11px] font-semibold ${tagClass(n.tag)}">${esc(n.tag)}</span>` : ''}
           </div>
-          <h3 class="font-semibold text-ink leading-snug">
+          <h3 class="font-semibold text-ink leading-snug min-w-0">
             ${n.link ? `<a href="${esc(n.link)}" class="hover:text-red transition-colors" target="_blank" rel="noopener">${esc(n.title)}</a>` : esc(n.title)}
           </h3>
           <p class="mt-1.5 text-sm text-muted leading-relaxed">${esc(n.body)}</p>
@@ -154,10 +189,10 @@
     projects() {
       if (!D.projects.length) return emptyState('Projects coming soon.');
       return D.projects.map(p => `
-        <article class="flex flex-col bg-white rounded-xl border border-border p-6 hover:shadow-md transition-shadow">
-          <div class="flex items-start justify-between gap-4 mb-3">
-            <h3 class="font-semibold text-ink text-lg leading-snug">${esc(p.title)}</h3>
-            <span class="shrink-0 rounded-full px-3 py-1 text-xs font-semibold ${
+        <article class="flex flex-col bg-white rounded-xl border border-border p-4 sm:p-6 hover:shadow-md transition-shadow">
+          <div class="flex items-start justify-between gap-3 mb-3">
+            <h3 class="font-semibold text-ink text-base sm:text-lg leading-snug min-w-0">${esc(p.title)}</h3>
+            <span class="shrink-0 rounded-full px-2.5 sm:px-3 py-1 text-xs font-semibold ${
               p.status === 'Active'
                 ? 'bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200'
                 : 'bg-slate-100 text-slate-500 ring-1 ring-slate-200'
@@ -171,42 +206,42 @@
         </article>`).join('');
     },
 
-    // Group photo
-'group-photo'() {
-  const photos = D.groupPhotos;
-  if (!photos || !photos.length) return `
-    <figure class="overflow-hidden rounded-2xl bg-coal border border-border">
-      <div class="relative aspect-[3/2] w-full grid place-items-center">
-        <p class="text-white/50 text-sm">Add group photos in js/data.js</p>
-      </div>
-    </figure>`;
+    // Group photo carousel
+    'group-photo'() {
+      const photos = D.groupPhotos;
+      if (!photos || !photos.length) return `
+        <figure class="overflow-hidden rounded-2xl bg-coal border border-border">
+          <div class="relative aspect-[3/2] w-full grid place-items-center">
+            <p class="text-white/50 text-sm">Add group photos in js/data.js</p>
+          </div>
+        </figure>`;
 
-  const slides = photos.map((p, i) => `
-    <div class="carousel-slide absolute inset-0 transition-opacity duration-700 ${i === 0 ? 'opacity-100' : 'opacity-0'}">
-      <img src="${esc(p.src)}" alt="${esc(p.caption)}"
-           class="h-full w-full object-cover">
-    </div>`).join('');
+      const slides = photos.map((p, i) => `
+        <div class="carousel-slide absolute inset-0 transition-opacity duration-700 ${i === 0 ? 'opacity-100' : 'opacity-0'}">
+          <img src="${esc(p.src)}" alt="${esc(p.caption)}"
+               class="h-full w-full object-cover">
+        </div>`).join('');
 
-  setTimeout(() => {
-    const wrap = document.querySelector('.carousel-wrap');
-    if (!wrap) return;
-    const allSlides = wrap.querySelectorAll('.carousel-slide');
-    let current = 0;
-    function goTo(n) {
-      allSlides[current].classList.replace('opacity-100', 'opacity-0');
-      current = (n + allSlides.length) % allSlides.length;
-      allSlides[current].classList.replace('opacity-0', 'opacity-100');
-    }
-    setInterval(() => goTo(current + 1), 3000);
-  }, 0);
+      setTimeout(() => {
+        const wrap = document.querySelector('.carousel-wrap');
+        if (!wrap) return;
+        const allSlides = wrap.querySelectorAll('.carousel-slide');
+        let current = 0;
+        function goTo(n) {
+          allSlides[current].classList.replace('opacity-100', 'opacity-0');
+          current = (n + allSlides.length) % allSlides.length;
+          allSlides[current].classList.replace('opacity-0', 'opacity-100');
+        }
+        setInterval(() => goTo(current + 1), 3000);
+      }, 0);
 
-  return `
-    <figure class="carousel-wrap overflow-hidden rounded-2xl border border-border">
-      <div class="relative aspect-[3/2] w-full">
-        ${slides}
-      </div>
-    </figure>`;
-},
+      return `
+        <figure class="carousel-wrap overflow-hidden rounded-xl sm:rounded-2xl border border-border">
+          <div class="relative aspect-[4/3] sm:aspect-[3/2] w-full">
+            ${slides}
+          </div>
+        </figure>`;
+    },
 
     // Member cards
     members() {
@@ -216,17 +251,16 @@
           .filter(([, url]) => url)
           .map(([k, url]) => `
             <a href="${esc(url)}" target="_blank" rel="noopener" aria-label="${esc(m.name)} on ${esc(k)}"
-               class="grid h-9 w-9 place-items-center rounded-xl bg-slate-100 text-slate-600 hover:bg-red hover:text-white transition-colors">
+               class="grid h-8 w-8 sm:h-9 sm:w-9 place-items-center rounded-xl bg-slate-100 text-slate-600 hover:bg-red hover:text-white transition-colors">
               ${ICONS[k] || ICONS.website}
             </a>`).join('');
         const email = m.email
           ? `<a href="mailto:${esc(m.email)}" aria-label="Email ${esc(m.name)}"
-               class="grid h-9 w-9 place-items-center rounded-xl bg-slate-100 text-slate-600 hover:bg-red hover:text-white transition-colors">
+               class="grid h-8 w-8 sm:h-9 sm:w-9 place-items-center rounded-xl bg-slate-100 text-slate-600 hover:bg-red hover:text-white transition-colors">
                ${ICONS.email}
              </a>`
           : '';
         const isPI = m.role === 'Principal Investigator';
-        // Split focus into tags if comma-separated, else show as single tag
         const focusTags = m.focus
           ? m.focus.split(',').map(t => t.trim()).filter(Boolean)
           : [];
@@ -235,21 +269,21 @@
                   class="h-full w-full object-cover object-top" onerror="this.parentElement.innerHTML='<span class=\'text-2xl font-bold text-white/40\'>${esc(m.name.split(' ').map(w=>w[0]).join('').slice(0,2))}</span>'">`
           : `<span class="text-2xl font-bold text-white/40">${esc(m.name.split(' ').map(w=>w[0]).join('').slice(0,2))}</span>`;
         return `
-          <article class="flex flex-col items-center text-center rounded-xl bg-white border border-border p-6 hover:shadow-md transition-shadow ${isPI ? 'ring-1 ring-red/40' : ''}">
+          <article class="flex flex-col items-center text-center rounded-xl bg-white border border-border p-4 sm:p-6 hover:shadow-md transition-shadow ${isPI ? 'ring-1 ring-red/40' : ''}">
             <!-- Avatar -->
-            <div class="h-24 w-24 rounded-full overflow-hidden bg-silver ring-2 ${isPI ? 'ring-red' : 'ring-border'} grid place-items-center mb-4 shrink-0">
+            <div class="h-20 w-20 sm:h-24 sm:w-24 rounded-full overflow-hidden bg-silver ring-2 ${isPI ? 'ring-red' : 'ring-border'} grid place-items-center mb-3 sm:mb-4 shrink-0">
               ${avatar}
             </div>
             <!-- Name & role -->
-            <h3 class="font-bold text-ink text-base leading-snug">${esc(m.name)}</h3>
-            <p class="mt-1 text-xs font-medium text-red uppercase tracking-wider">${esc(m.role)}</p>
+            <h3 class="font-bold text-ink text-sm sm:text-base leading-snug">${esc(m.name)}</h3>
+            <p class="mt-1 text-[11px] sm:text-xs font-medium text-red uppercase tracking-wider">${esc(m.role)}</p>
             <!-- Focus tags -->
             ${focusTags.length ? `
-              <div class="mt-3 flex flex-wrap justify-center gap-1.5">
-                ${focusTags.map(t => `<span class="rounded-md bg-slate-100 border border-slate-200 px-2.5 py-0.5 text-[11px] font-medium text-slate-600">${esc(t)}</span>`).join('')}
+              <div class="mt-2 sm:mt-3 flex flex-wrap justify-center gap-1 sm:gap-1.5">
+                ${focusTags.map(t => `<span class="rounded-md bg-slate-100 border border-slate-200 px-2 sm:px-2.5 py-0.5 text-[10px] sm:text-[11px] font-medium text-slate-600">${esc(t)}</span>`).join('')}
               </div>` : ''}
             <!-- Social links -->
-            ${(email || social) ? `<div class="mt-4 flex gap-2 justify-center">${email}${social}</div>` : ''}
+            ${(email || social) ? `<div class="mt-3 sm:mt-4 flex flex-wrap gap-1.5 sm:gap-2 justify-center">${email}${social}</div>` : ''}
           </article>`;
       }).join('');
     },
@@ -262,37 +296,38 @@
         return acc;
       }, {});
       return Object.keys(byYear).sort((a, b) => b - a).map(year => `
-        <section aria-labelledby="y-${year}" class="grid gap-6 md:grid-cols-[96px_1fr]">
-          <h2 id="y-${year}" class="text-2xl font-bold text-red pt-1">${year}</h2>
-          <ul class="space-y-4">
+        <section aria-labelledby="y-${year}" class="grid gap-4 sm:gap-6 md:grid-cols-[80px_1fr] lg:grid-cols-[96px_1fr]">
+          <h2 id="y-${year}" class="text-xl sm:text-2xl font-bold text-red pt-1">${year}</h2>
+          <ul class="space-y-3 sm:space-y-4 min-w-0">
             ${byYear[year].map(p => `
-              <li class="bg-white rounded-xl border border-border p-5">
+              <li class="bg-white rounded-xl border border-border p-4 sm:p-5 min-w-0">
                 <div class="flex flex-wrap items-center gap-2 mb-2">
                   <span class="rounded-full bg-red/10 text-red px-2.5 py-0.5 text-[11px] font-semibold">${esc(p.type || 'Paper')}</span>
-                  <span class="text-sm text-muted">${esc(p.venue)}</span>
+                  <span class="text-xs sm:text-sm text-muted min-w-0">${esc(p.venue)}</span>
                 </div>
-                <h3 class="font-semibold text-ink leading-snug">
+                <h3 class="font-semibold text-ink leading-snug text-sm sm:text-base min-w-0">
                   ${!isTodo(p.link) && p.link
                     ? `<a href="${esc(p.link)}" target="_blank" rel="noopener" class="hover:text-red transition-colors">${esc(p.title)}</a>`
                     : esc(p.title)}
                 </h3>
-                <p class="mt-1 text-sm text-muted">${esc(p.authors)}</p>
+                <p class="mt-1 text-xs sm:text-sm text-muted">${esc(p.authors)}</p>
               </li>`).join('')}
           </ul>
         </section>`).join('');
     },
-        // Lab Tools
+
+    // Lab Tools
     tools() {
       if (!D.tools || !D.tools.length) return emptyState('No tools listed yet.');
       return D.tools.map(t => `
-        <article class="bg-white rounded-xl border border-border p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col gap-4">
-          <div class="flex items-start justify-between gap-4">
-            <div>
-              <h3 class="text-lg font-bold text-ink">${esc(t.name)}</h3>
+        <article class="bg-white rounded-xl border border-border p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col gap-3 sm:gap-4">
+          <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+            <div class="min-w-0">
+              <h3 class="text-base sm:text-lg font-bold text-ink">${esc(t.name)}</h3>
               <p class="mt-1 text-sm text-muted leading-relaxed">${esc(t.description)}</p>
             </div>
             ${t.tags && t.tags.length ? `
-              <div class="flex flex-wrap gap-1.5 shrink-0">
+              <div class="flex flex-wrap gap-1.5 sm:shrink-0">
                 ${t.tags.map(tag => `<span class="rounded-full bg-silver border border-border px-2.5 py-0.5 text-[11px] font-medium text-muted">${esc(tag)}</span>`).join('')}
               </div>` : ''}
           </div>
