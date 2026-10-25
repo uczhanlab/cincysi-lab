@@ -351,7 +351,7 @@ tools: [
     },
     {
       name: "Citation Checker",
-      description: "Verifies references in academic manuscripts before submission. Upload a paper or paste a reference list and it checks DOIs, authors, journals, and publication years against published records — flagging invalid citations and duplicates.",
+      description: "Verifies references in academic manuscripts before submission. Upload a paper or paste a reference list and it checks DOIs, authors, journals, and publication years against published records, flagging invalid citations and duplicates.",
       url: "https://citationchecker.jp/",
       tags: []
     }
