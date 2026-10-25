@@ -309,7 +309,16 @@ groupPhotos: [
       email: "yang3sk@mail.uc.edu",
       focus: "AI, Bioinformatics, Complex Network",
       links: { linkedin: "", github: "", scholar: "", website: "" }
+    },
+    {
+      name: "Dakshitha Sai Pusala",
+      role: "Master’s Student",
+      photo: "images/members/Dakshitha Pusala.jpg",
+      email: "pusaladi@mail.uc.edu",
+      focus: "AI, Machine Learning",
+      links: { linkedin: "www.linkedin.com/in/dakshithasaip14", github: "", scholar: "", website: "" }
     }
+
   ],
 
   // -------------------------------------------------------------------
