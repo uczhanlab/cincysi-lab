@@ -177,7 +177,7 @@ groupPhotos: [
     {
       name: "Gaurab Baral",
       role: "Ph.D. Student",
-      photo: "images/members/Gaurab-Baral.jpg",
+      photo: "images/members/Gaurab Baral.jpg",
       email: "baralgb@uc.edu",
       focus: "NLP, AI, Computer Vision",
       links: { linkedin: "https://www.linkedin.com/in/gaurab-baral-991333216/", github: "https://github.com/TempGaurab", scholar: "https://scholar.google.com/citations?user=N0TDR9AAAAAJ&hl=en&oi=ao", website: "https://tempgaurab.github.io/TempGaurab/" }
@@ -209,7 +209,7 @@ groupPhotos: [
     {
       name: "Monirul I. Mahmud",
       role: "Ph.D. Student",
-      photo: "images/members/Monirul I. Mahmud.jpg",
+      photo: "images/members/Monirul I. Mahmud.png",
       email: "mahmudmi@mail.uc.edu",
       focus: "Efficient LLM, LLM Security, Trustworthy AI",
       links: { linkedin: "https://www.linkedin.com/in/monirul-islam-mahmud/", github: "https://github.com/Monirules", scholar: "https://scholar.google.com/citations?user=9pLzr9UAAAAJ", website: "https://monirules.github.io/" }
@@ -225,7 +225,7 @@ groupPhotos: [
     {
       name: "Adwitiya Shukla",
       role: "Master's Student",
-      photo: "images/members/linkedin - adwitiya shukla.jpg",
+      photo: "images/members/adwitiya shukla.jpg",
       email: "shuklaaw@mail.uc.edu",
       focus: "AI, ML, Deep Learning, LLMs, Clinical NLP, Medical Coding",
       links: { linkedin: "https://www.linkedin.com/in/adwitiya-shukla-94109a264", github: "https://github.com/adwitiyashukla", scholar: "https://scholar.google.com/citations?user=kGfPJiwAAAAJ", website: "https://adwitiyashukla.com/" }
@@ -233,7 +233,7 @@ groupPhotos: [
     {
       name: "Md Shihab Reza",
       role: "Ph.D. Student",
-      photo: "images/members/Md Shihab Reza.jpg",
+      photo: "images/members/Shihab Reza.jpg",
       email: "rezamb@mail.uc.edu",
       focus: "LLMs, LLM Security, Trustworthy AI, AI Forensics, Machine Learning",
       links: { linkedin: "http://www.linkedin.com/in/shihabrezaadit", github: "https://github.com/ShihabRezaAdit", scholar: "https://scholar.google.com/citations?user=7OiPbxwAAAAJ", website: "https://sites.google.com/view/shihabreza/home" }
@@ -249,7 +249,7 @@ groupPhotos: [
     {
       name: "Yang Lu",
       role: "Ph.D. Student",
-      photo: "images/members/Yang Lu.jpg",
+      photo: "images/members/Yang Lu.png",
       email: "lu2y4@mail.uc.edu",
       focus: "Bioinformatics, BioNLP",
       links: { linkedin: "https://www.linkedin.com/in/yang-lu-73a87033/", github: "", scholar: "https://scholar.google.com/citations?user=xpP7NfsAAAAJ&hl=en", website: "" }
