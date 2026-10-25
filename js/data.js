@@ -161,7 +161,7 @@ groupPhotos: [
     {
       name: "Ritesh Janga",
       role: "Ph.D. Student",
-      photo: "images/Ritesh.jpeg",
+      photo: "images/members/Ritesh.jpeg",
       email: "jangarh@mail.uc.edu",
       focus: "Placeholder research focus statement.",
       links: { linkedin: "https://www.linkedin.com/in/ritesh-07j2002?utm_source=share_via&utm_content=profile&utm_medium=member_android", github: "", scholar: "https://scholar.google.com/citations?user=kgfbxRUAAAAJ&hl=en", website: "" }
@@ -169,7 +169,7 @@ groupPhotos: [
     {
       name: "Yagna Manasa Boyapati",
       role: "Ph.D. Student",
-      photo: "images/Manasa.jpeg",
+      photo: "images/members/Manasa.jpeg",
       email: "boyapaya@mail.uc.edu",
       focus: "Federated Learning, Large Language Models, Privacy-Preserving AI",
       links: { linkedin: "https://www.linkedin.com/in/boyapati-yagna-manasa/", github: "https://github.com/manasa2107", scholar: "https://scholar.google.com/citations?user=uHR64QcAAAAJ&hl=en&oi=ao", website: "https://manasa2107.github.io/" }
@@ -225,7 +225,7 @@ groupPhotos: [
     {
       name: "Adwitiya Shukla",
       role: "Master's Student",
-      photo: "images/members/Adwitiya Shukla.jpg",
+      photo: "images/members/linkedin - adwitiya shukla.jpg",
       email: "shuklaaw@mail.uc.edu",
       focus: "AI, ML, Deep Learning, LLMs, Clinical NLP, Medical Coding",
       links: { linkedin: "https://www.linkedin.com/in/adwitiya-shukla-94109a264", github: "https://github.com/adwitiyashukla", scholar: "https://scholar.google.com/citations?user=kGfPJiwAAAAJ", website: "https://adwitiyashukla.com/" }
