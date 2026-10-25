@@ -216,12 +216,12 @@
           .filter(([, url]) => url)
           .map(([k, url]) => `
             <a href="${esc(url)}" target="_blank" rel="noopener" aria-label="${esc(m.name)} on ${esc(k)}"
-               class="grid h-9 w-9 place-items-center rounded-xl bg-silver text-muted hover:bg-red hover:text-white transition-colors">
+               class="grid h-9 w-9 place-items-center rounded-xl bg-slate-100 text-slate-600 hover:bg-red hover:text-white transition-colors">
               ${ICONS[k] || ICONS.website}
             </a>`).join('');
         const email = m.email
           ? `<a href="mailto:${esc(m.email)}" aria-label="Email ${esc(m.name)}"
-               class="grid h-9 w-9 place-items-center rounded-xl bg-silver text-muted hover:bg-red hover:text-white transition-colors">
+               class="grid h-9 w-9 place-items-center rounded-xl bg-slate-100 text-slate-600 hover:bg-red hover:text-white transition-colors">
                ${ICONS.email}
              </a>`
           : '';
@@ -246,7 +246,7 @@
             <!-- Focus tags -->
             ${focusTags.length ? `
               <div class="mt-3 flex flex-wrap justify-center gap-1.5">
-                ${focusTags.map(t => `<span class="rounded-md bg-silver border border-border px-2.5 py-0.5 text-[11px] text-muted">${esc(t)}</span>`).join('')}
+                ${focusTags.map(t => `<span class="rounded-md bg-slate-100 border border-slate-200 px-2.5 py-0.5 text-[11px] font-medium text-slate-600">${esc(t)}</span>`).join('')}
               </div>` : ''}
             <!-- Social links -->
             ${(email || social) ? `<div class="mt-4 flex gap-2 justify-center">${email}${social}</div>` : ''}
