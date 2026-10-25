@@ -249,7 +249,7 @@ groupPhotos: [
     {
       name: "Kim Anh Phung",
       role: "Ph.D. Student",
-      photo: "images/members/Kim Anh Phung.jpg",
+      photo: "images/members/Kim Anh Phung.png",
       email: "phungkh@mail.uc.edu",
       focus: "Computer Vision, Computational Biology",
       links: { linkedin: "", github: "", scholar: "", website: "" }
