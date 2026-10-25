@@ -171,7 +171,7 @@ groupPhotos: [
       role: "Ph.D. Student",
       photo: "images/members/Manasa.jpeg",
       email: "boyapaya@mail.uc.edu",
-      focus: "Federated Learning, Privacy-Preserving AI, Large Language Models, LLM Agent Security, Digital & Cognitive Health, Responsible AI",
+      focus: "Federated Learning, Privacy-Preserving AI, LLMs & Agent Security, Responsible AI",
       links: { linkedin: "https://www.linkedin.com/in/boyapati-yagna-manasa/", github: "https://github.com/manasa2107", scholar: "https://scholar.google.com/citations?user=uHR64QcAAAAJ&hl=en&oi=ao", website: "https://manasa2107.github.io/" }
     },
     {
