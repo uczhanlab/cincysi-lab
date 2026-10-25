@@ -325,7 +325,7 @@
             <div class="min-w-0">
               <h3 class="text-base sm:text-lg font-bold text-ink">${esc(t.name)}</h3>
               <p class="mt-1 text-sm text-muted leading-relaxed">${esc(t.description)}</p>
-              ${t.credit ? `<p class="mt-2 text-xs font-medium text-slate-400">${esc(t.credit.label)}: ${esc(t.credit.name)}</p>` : ''}
+              ${t.credit ? `<p class="mt-2 text-xs font-semibold text-ink">${esc(t.credit.label)}: ${esc(t.credit.name)}</p>` : ''}
             </div>
             ${t.tags && t.tags.length ? `
               <div class="flex flex-wrap gap-1.5 sm:shrink-0">
