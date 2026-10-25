@@ -233,7 +233,7 @@ groupPhotos: [
     {
       name: "Dhathri Sree Monukonda",
       role: "Master's Student",
-      photo: "images/members/dhathri m.jpg",
+      photo: "images/members/dhathri m.png",
       email: "monukode@mail.uc.edu",
       focus: "AI",
       links: { linkedin: "", github: "", scholar: "", website: "" }
