@@ -171,7 +171,7 @@ groupPhotos: [
       role: "Ph.D. Student",
       photo: "images/members/Manasa.jpeg",
       email: "boyapaya@mail.uc.edu",
-      focus: "Federated Learning, Large Language Models, Privacy-Preserving AI",
+      focus: "Federated Learning, Privacy-Preserving AI, Large Language Models, LLM Agent Security, Digital & Cognitive Health, Responsible AI",
       links: { linkedin: "https://www.linkedin.com/in/boyapati-yagna-manasa/", github: "https://github.com/manasa2107", scholar: "https://scholar.google.com/citations?user=uHR64QcAAAAJ&hl=en&oi=ao", website: "https://manasa2107.github.io/" }
     },
     {
@@ -203,7 +203,7 @@ groupPhotos: [
       role: "Ph.D. Student",
       photo: "images/members/Ritesh.jpeg",
       email: "jangarh@mail.uc.edu",
-      focus: "Reliable Agentic AI, LLM Evaluation, RAG & GraphRAG, Efficient LLMs, Privacy-preserving ML",
+      focus: "Federated Learning, LLM Evaluation, Reliable Agentic AI",
       links: { linkedin: "https://www.linkedin.com/in/ritesh-07j2002?utm_source=share_via&utm_content=profile&utm_medium=member_android", github: "https://github.com/Ritesh778", scholar: "https://scholar.google.com/citations?user=kgfbxRUAAAAJ&hl=en", website: "https://ritesh778.github.io/" }
     },
     {
@@ -340,7 +340,7 @@ tools: [
     {
       name: "BearTrack",
       description: "Weekly work reporting portal for lab members to log progress and share updates with Dr. Zhan.",
-      url: "https://beartrack-uc.vercel.app/",
+      url: "https://beartrack.si",
       tags: []
     },
     {
