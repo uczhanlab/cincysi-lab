@@ -263,6 +263,14 @@ groupPhotos: [
       links: { linkedin: "https://www.linkedin.com/in/kate-plas-b2b391192/", github: "https://github.com/plask3189", scholar: "https://scholar.google.com/citations?user=MG5Bh_AAAAAJ&hl=en&oi=ao", website: "" }
     },
     {
+      name: "Dakshitha Sai Pusala",
+      role: "Master’s Student",
+      photo: "images/members/Dakshitha Pusala.jpg",
+      email: "pusaladi@mail.uc.edu",
+      focus: "AI, Machine Learning",
+      links: { linkedin: "www.linkedin.com/in/dakshithasaip14", github: "", scholar: "", website: "" }
+    },
+    {
       name: "Md Shihab Reza",
       role: "Ph.D. Student",
       photo: "images/members/Shihab Reza.jpg",
@@ -310,14 +318,6 @@ groupPhotos: [
       focus: "AI, Bioinformatics, Complex Network",
       links: { linkedin: "", github: "", scholar: "", website: "" }
     },
-    {
-      name: "Dakshitha Sai Pusala",
-      role: "Master’s Student",
-      photo: "images/members/Dakshitha Pusala.jpg",
-      email: "pusaladi@mail.uc.edu",
-      focus: "AI, Machine Learning",
-      links: { linkedin: "www.linkedin.com/in/dakshithasaip14", github: "", scholar: "", website: "" }
-    }
 
   ],
 
