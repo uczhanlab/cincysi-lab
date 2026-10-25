@@ -156,7 +156,7 @@ groupPhotos: [
       photo: "images/Dr.Zhan2.jpeg",
       email: "justin.zhan@uc.edu",
       focus: "Data Science, Artificial Intelligence, Blockchain, Biomedical Informatics, Social Computing",
-      links: { linkedin: "", github: "", scholar: "", website: "https://justinzhan.com" }
+      links: { linkedin: "https://www.linkedin.com/in/justin-zhan-366981256", github: "", scholar: "https://scholar.google.com/citations?user=3klqaJMAAAAJ&hl=en", website: "https://justinzhan.com" }
     },
     {
       name: "Ritesh Janga",
