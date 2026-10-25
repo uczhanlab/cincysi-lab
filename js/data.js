@@ -67,7 +67,7 @@ window.SITE_DATA = {
     { label: "Research",     href: "research.html" },
     { label: "Members",      href: "members.html" },
     { label: "Publications", href: "publications.html" },
-    { label: "Lab Tools",    href: "tools.html" }
+    { label: "Open Source Tools",    href: "tools.html" }
   ],
 
   // -------------------------------------------------------------------
@@ -229,6 +229,14 @@ groupPhotos: [
       email: "mahmudmi@mail.uc.edu",
       focus: "Efficient LLM, LLM Security, Trustworthy AI",
       links: { linkedin: "https://www.linkedin.com/in/monirul-islam-mahmud/", github: "https://github.com/Monirules", scholar: "https://scholar.google.com/citations?user=9pLzr9UAAAAJ", website: "https://monirules.github.io/" }
+    },
+    {
+      name: "Abdullah Al Mamun",
+      role: "Ph.D. Student",
+      photo: "images/members/Abdullah_Al_Mamun.jpg",
+      email: "mamunal@mail.uc.edu",
+      focus: "AI, ML, DS, LLMs, Trustworthy AI, Unsupervised Anomaly Detection, Robust Learning, Representation Learning, Statistical Calibration, Data Quality",
+      links: { linkedin: "https://www.linkedin.com/in/abdullah-al-mamun-65a528165/", github: "", scholar: "https://scholar.google.com/citations?user=tja7LO0AAAAJ&hl=en", website: "" }
     },
     {
       name: "Dhathri Sree Monukonda",
