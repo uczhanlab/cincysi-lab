@@ -203,7 +203,7 @@ groupPhotos: [
       role: "Ph.D. Student",
       photo: "images/members/Ritesh.jpeg",
       email: "jangarh@mail.uc.edu",
-      focus: "Reliable and efficient LLM systems, Agentic AI and selective re-execution, Retrieval-augmented generation, Privacy-preserving and federated learning",
+      focus: "Reliable Agentic AI, LLM Evaluation, RAG & GraphRAG, Efficient LLMs, Privacy-preserving ML",
       links: { linkedin: "https://www.linkedin.com/in/ritesh-07j2002?utm_source=share_via&utm_content=profile&utm_medium=member_android", github: "https://github.com/Ritesh778", scholar: "https://scholar.google.com/citations?user=kgfbxRUAAAAJ&hl=en", website: "https://ritesh778.github.io/" }
     },
     {
