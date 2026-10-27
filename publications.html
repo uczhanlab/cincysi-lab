@@ -139,6 +139,12 @@
       groups[p.contributor].push(p);
     });
 
+    order.sort(function (a, b) {
+      var lastA = a.split(' ').pop();
+      var lastB = b.split(' ').pop();
+      return lastA.localeCompare(lastB);
+    });
+
     /* Sort each person's papers: latest month first */
     order.forEach(function (name) {
       groups[name].sort(function (a, b) {
