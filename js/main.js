@@ -145,6 +145,55 @@
       </footer>`;
   }
 
+  // ---------- live tech news (Hacker News API) ----------
+  const TECH_KEYWORDS = ['AI', 'artificial intelligence', 'machine learning', 'LLM', 'deep learning',
+    'neural network', 'NLP', 'computer vision', 'GPT', 'transformer', 'research', 'paper',
+    'conference', 'arxiv', 'benchmark', 'dataset', 'model', 'language model'];
+
+  async function fetchTechNews(container) {
+    if (!container) return;
+    container.innerHTML = `<p class="text-sm text-muted italic py-4">Loading latest tech &amp; AI news…</p>`;
+    try {
+      const res = await fetch('https://hacker-news.firebaseio.com/v0/topstories.json');
+      const ids = await res.json();
+      const stories = await Promise.all(
+        ids.slice(0, 100).map(id =>
+          fetch(`https://hacker-news.firebaseio.com/v0/item/${id}.json`)
+            .then(r => r.json()).catch(() => null)
+        )
+      );
+      const filtered = stories
+        .filter(s => s && s.title && s.url)
+        .filter(s => TECH_KEYWORDS.some(kw => s.title.toLowerCase().includes(kw.toLowerCase())))
+        .slice(0, 10);
+
+      if (!filtered.length) {
+        container.innerHTML = `<p class="text-sm text-muted italic py-4">No relevant stories right now — try again later.</p>`;
+        return;
+      }
+      container.innerHTML = `<div class="grid gap-4 sm:grid-cols-2">` + filtered.map(s => {
+        let domain = '';
+        try { domain = new URL(s.url).hostname.replace('www.', ''); } catch (_) {}
+        const date = new Date(s.time * 1000).toLocaleDateString('en-US',
+          { year: 'numeric', month: 'short', day: 'numeric' });
+        return `
+          <article class="bg-silver rounded-xl border border-border p-4 hover:shadow-md transition-shadow flex flex-col gap-2">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="text-xs text-muted tabular-nums">${date}</span>
+              <span class="rounded-full px-2.5 py-0.5 text-[11px] font-semibold bg-blue-50 text-blue-700 ring-1 ring-blue-200">AI / Tech</span>
+              ${domain ? `<span class="text-[11px] text-muted/70">${esc(domain)}</span>` : ''}
+            </div>
+            <h3 class="font-semibold text-ink leading-snug text-sm">
+              <a href="${esc(s.url)}" class="hover:text-red transition-colors" target="_blank" rel="noopener">${esc(s.title)}</a>
+            </h3>
+            <p class="text-xs text-muted">${s.score || 0} points · ${s.descendants || 0} comments</p>
+          </article>`;
+      }).join('') + `</div>`;
+    } catch (e) {
+      container.innerHTML = `<p class="text-sm text-muted italic py-4">Could not load news. Check your connection.</p>`;
+    }
+  }
+
   // ---------- renderers ----------
   function limit(items, el) {
     const n = parseInt(el && el.dataset.limit, 10);
@@ -167,22 +216,10 @@
         </div>`;
     },
 
-    // News feed
-    news(el) {
-      const sorted = [...D.news].sort((a, b) => b.date.localeCompare(a.date));
-      const items = limit(sorted, el);
-      if (!items.length) return emptyState('No announcements yet.');
-      return items.map(n => `
-        <article class="py-4 sm:py-5 border-b border-border last:border-0">
-          <div class="flex flex-wrap items-center gap-2 mb-2">
-            <time datetime="${esc(n.date)}" class="text-xs text-muted tabular-nums">${fmtDate(n.date)}</time>
-            ${n.tag ? `<span class="rounded-full px-2.5 py-0.5 text-[11px] font-semibold ${tagClass(n.tag)}">${esc(n.tag)}</span>` : ''}
-          </div>
-          <h3 class="font-semibold text-ink leading-snug min-w-0">
-            ${n.link ? `<a href="${esc(n.link)}" class="hover:text-red transition-colors" target="_blank" rel="noopener">${esc(n.title)}</a>` : esc(n.title)}
-          </h3>
-          <p class="mt-1.5 text-sm text-muted leading-relaxed">${esc(n.body)}</p>
-        </article>`).join('');
+    // Tech & AI News — live from Hacker News, auto-fetches on render
+    technews(el) {
+      setTimeout(() => fetchTechNews(el), 0);
+      return `<p class="text-sm text-muted italic py-4">Loading latest tech &amp; AI news…</p>`;
     },
 
     // Research project cards
@@ -270,19 +307,15 @@
           : `<span class="text-2xl font-bold text-white/40">${esc(m.name.split(' ').map(w=>w[0]).join('').slice(0,2))}</span>`;
         return `
           <article class="flex flex-col items-center text-center rounded-xl bg-white border border-border p-4 sm:p-6 hover:shadow-md transition-shadow ${isPI ? 'ring-1 ring-red/40' : ''}">
-            <!-- Avatar -->
             <div class="h-20 w-20 sm:h-24 sm:w-24 rounded-full overflow-hidden bg-silver ring-2 ${isPI ? 'ring-red' : 'ring-border'} grid place-items-center mb-3 sm:mb-4 shrink-0">
               ${avatar}
             </div>
-            <!-- Name & role -->
             <h3 class="font-bold text-ink text-sm sm:text-base leading-snug">${esc(m.name)}</h3>
             <p class="mt-1 text-[11px] sm:text-xs font-medium text-red uppercase tracking-wider">${esc(m.role)}</p>
-            <!-- Focus tags -->
             ${focusTags.length ? `
               <div class="mt-2 sm:mt-3 flex flex-wrap justify-center gap-1 sm:gap-1.5">
                 ${focusTags.map(t => `<span class="rounded-md bg-slate-100 border border-slate-200 px-2 sm:px-2.5 py-0.5 text-[10px] sm:text-[11px] font-medium text-slate-600">${esc(t)}</span>`).join('')}
               </div>` : ''}
-            <!-- Social links -->
             ${(email || social) ? `<div class="mt-3 sm:mt-4 flex flex-wrap gap-1.5 sm:gap-2 justify-center">${email}${social}</div>` : ''}
           </article>`;
       }).join('');
@@ -343,6 +376,8 @@
         </article>`).join('');
     }
   };
+
+  // fetchTechNews is called directly from index.html on DOMContentLoaded
 
   // ---------- boot ----------
   document.addEventListener('DOMContentLoaded', () => {
