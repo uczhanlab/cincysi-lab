@@ -76,7 +76,7 @@ window.SITE_DATA = {
   links: {
     email:    { label: "Contact the lab",  url: "mailto:justin.zhan@uc.edu" },
     linkedin: { label: "LinkedIn",         url: "#TODO" },
-    github:   { label: "GitHub",           url: "#TODO" },
+    github:   { url: 'https://github.com/uczhanlab', label: 'GitHub' },
     drZhan:   { label: "Dr. Zhan's site",  url: "https://justinzhan.com" }
   },
 
