@@ -8,31 +8,201 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <script src="js/theme.js"></script>
+  <script src="js/data.js"></script>
   <style>
     body { font-family: 'Inter', system-ui, sans-serif; }
   </style>
 </head>
-<body class="bg-silver text-ink antialiased min-h-screen flex flex-col">
+<body class="bg-[#f2f2f0] text-ink antialiased min-h-screen flex flex-col">
 
   <div id="site-header"></div>
 
-  <main class="flex-1 max-w-5xl w-full mx-auto px-5 sm:px-8 py-14 md:py-20">
+  <main class="flex-1 max-w-6xl w-full mx-auto px-5 sm:px-8 py-14 md:py-20">
 
     <p class="text-xs font-semibold uppercase tracking-[0.2em] text-red">Publications</p>
-    <h1 class="mt-3 text-4xl md:text-5xl font-bold tracking-tight">Lab Outputs</h1>
-    <p class="mt-4 max-w-2xl text-muted leading-relaxed">
-      Peer-reviewed articles from the CincySI Lab, newest first.
+    <h1 class="mt-3 text-4xl md:text-5xl font-bold tracking-tight text-[#0f1117]">Lab Outputs</h1>
+    <p class="mt-4 text-[#6b7280] leading-relaxed text-justify">
+      Peer-reviewed articles, conference papers, and preprints from CincySI Lab members in 2026, grouped by contributor.
     </p>
 
-    <div data-render="publications" class="mt-12 space-y-14"></div>
+    <div id="pub-root" class="mt-12 space-y-12"></div>
 
   </main>
 
   <div id="site-footer"></div>
-
-  <script src="js/data.js"></script>
   <script src="js/main.js"></script>
+
+  <script>
+  (function () {
+
+    var TYPE_COLORS = {
+      'Journal':    'bg-blue-50 text-blue-700 ring-1 ring-blue-200',
+      'Conference': 'bg-purple-50 text-purple-700 ring-1 ring-purple-200',
+      'Preprint':   'bg-amber-50 text-amber-700 ring-1 ring-amber-200',
+    };
+
+    /* Month order for sorting (latest first) */
+    var MONTH_ORDER = {
+      'January':1,'February':2,'March':3,'April':4,'May':5,'June':6,
+      'July':7,'August':8,'September':9,'October':10,'November':11,'December':12
+    };
+
+    var PUBS = [
+      /* ── Kate Plas ─────────────────────────────────────────────── */
+      {
+        contributor: 'Kate Plas',
+        month: 'June',
+        type: 'Journal',
+        title: 'Prognostic and therapeutic implications of BRAF mutations in acute myeloid leukemia',
+        authors: 'Darren Lee, Yazan Abu-Shihab, Kate Plas, Deedra Nicolet, Krzysztof Mrozek, et al.',
+        venue: 'Leukemia',
+        link: 'https://www.nature.com/articles/s41375-026-02996-1'
+      },
+      {
+        contributor: 'Kate Plas',
+        month: 'June',
+        type: 'Conference',
+        title: 'Building Pathways into Trustworthy AI (TAI) Technology: Experiential Learning Artificial Intelligence (ExLAI) Summer Program',
+        authors: 'Justin Zhan, Youn Seon Lim, Hanniel Shih, Kate Plas, Nicholas Jarvis, Julia Holton',
+        venue: '2026 ASEE Annual Conference & Exposition',
+        link: 'https://peer.asee.org/building-pathways-into-trustworthy-ai-tai-technology-experiential-learning-artificial-intelligence-exlai-summer-program'
+      },
+      {
+        contributor: 'Kate Plas',
+        month: 'June',
+        type: 'Conference',
+        title: 'Unified fidelity metric for synthetic imagery',
+        authors: 'Kate Plas, Justin Zhan, Jing Lin',
+        venue: 'Pattern Recognition and Prediction XXXVII (SPIE)',
+        link: 'https://www.spiedigitallibrary.org/conference-proceedings-of-spie/14032/140320K/Unified-fidelity-metric-for-synthetic-imagery/10.1117/12.3095062.short'
+      },
+      {
+        contributor: 'Kate Plas',
+        month: 'February',
+        type: 'Conference',
+        title: 'A Machine Learning Approach for Effective Malaria Diagnosis and Parasite Profiling',
+        authors: 'Aiden Yang, Kate Plas, Justin Zhan',
+        venue: '13th International Conference on Machine Intelligence Theory and Applications (MiTA)',
+        link: 'https://ieeexplore.ieee.org/abstract/document/11582132'
+      },
+      /* ── Kim Anh Phung ──────────────────────────────────────────── */
+      {
+        contributor: 'Kim Anh Phung',
+        month: 'June',
+        type: 'Preprint',
+        title: 'PrefPaint: Enhancing Medical Image Inpainting through Expert Human Feedback',
+        authors: 'Duy-Bao Bui, Hoang-Khang Nguyen, Thao Thi Phuong Dao, Kim Anh Phung, Tam V Nguyen, Justin Zhan, Minh-Triet Tran, Trung-Nghia Le',
+        venue: 'arXiv:2506.21834',
+        link: 'https://arxiv.org/pdf/2506.21834'
+      },
+      {
+        contributor: 'Kim Anh Phung',
+        month: 'June',
+        type: 'Conference',
+        title: 'From Genes to Subtypes: Benchmarking Feature Selection in Glioblastoma',
+        authors: 'Kim Anh Phung, Justin Zhan',
+        venue: 'ACM International Conference on Bioinformatics, Computational Biology and Health Informatics',
+        link: 'https://doi.org/10.1145/3807503.3819365'
+      },
+      /* ── Yagna Manasa Boyapati ──────────────────────────────────── */
+      {
+        contributor: 'Yagna Manasa Boyapati',
+        month: 'October',
+        type: 'Conference',
+        title: 'Privacy-Preserving Heterogeneous Multi-LLM Federated Inference for Cognitive Diagnosis',
+        authors: 'Yagna Manasa Boyapati, Chong Yu, Tianyu Jiang, Justin Zhan',
+        venue: 'Findings of ACL: EMNLP 2026',
+        link: 'https://aclanthology.org/2026.findings-emnlp.1318/'
+      },
+      /* ── Adwitiya Shukla ────────────────────────────────────────── */
+      {
+        contributor: 'Adwitiya Shukla',
+        month: 'August',
+        type: 'Conference',
+        title: 'Legacy Oracle Systems to Snowflake Cloud Data Warehouse Migration of Healthcare Data Management',
+        authors: 'Adwitiya Shukla',
+        venue: 'ICADCML 2026, Lecture Notes in Networks and Systems, Springer',
+        link: 'https://doi.org/10.1007/978-3-032-25087-2_21'
+      },
+    ];
+
+    /* Group by contributor, preserving insertion order of first appearance */
+    var groups = {};
+    var order  = [];
+    PUBS.forEach(function (p) {
+      if (!groups[p.contributor]) {
+        groups[p.contributor] = [];
+        order.push(p.contributor);
+      }
+      groups[p.contributor].push(p);
+    });
+
+    /* Sort each person's papers: latest month first */
+    order.forEach(function (name) {
+      groups[name].sort(function (a, b) {
+        return (MONTH_ORDER[b.month] || 0) - (MONTH_ORDER[a.month] || 0);
+      });
+    });
+
+    /* Render */
+    var root = document.getElementById('pub-root');
+
+    order.forEach(function (name) {
+      var papers = groups[name];
+
+      /* Initials avatar */
+      var initials = name.split(' ').map(function (w) { return w[0]; }).join('').slice(0, 2);
+
+      var section = document.createElement('div');
+
+      /* Person header */
+      var header = document.createElement('div');
+      header.className = 'flex items-center gap-3 mb-5';
+      header.innerHTML =
+        '<div class="h-10 w-10 rounded-full bg-[#0f1117] grid place-items-center shrink-0">' +
+          '<span class="text-xs font-bold text-white">' + initials + '</span>' +
+        '</div>' +
+        '<div>' +
+          '<p class="font-bold text-[#0f1117] text-base">' + name + '</p>' +
+          '<p class="text-xs text-[#6b7280]">' + papers.length + ' publication' + (papers.length > 1 ? 's' : '') + ' · 2026</p>' +
+        '</div>';
+      section.appendChild(header);
+
+      /* Paper cards */
+      var grid = document.createElement('div');
+      grid.className = 'grid gap-4 md:grid-cols-2';
+
+      papers.forEach(function (p) {
+        var typeClass = TYPE_COLORS[p.type] || 'bg-slate-100 text-slate-600 ring-1 ring-slate-200';
+        var card = document.createElement('article');
+        card.className = 'bg-white border border-[#e5e7eb] rounded-2xl p-5 flex flex-col gap-3 hover:shadow-md hover:border-[#e00122]/20 transition-all';
+        card.innerHTML =
+          '<div class="flex items-start justify-between gap-2">' +
+            '<span class="inline-flex items-center rounded-full px-2.5 py-0.5 text-[11px] font-semibold ' + typeClass + '">' + p.type + '</span>' +
+            '<span class="text-[11px] text-[#9ca3af] font-medium shrink-0">' + p.month + ' 2026</span>' +
+          '</div>' +
+          '<h3 class="font-semibold text-[#0f1117] text-sm leading-snug">' +
+            (p.link
+              ? '<a href="' + p.link + '" target="_blank" rel="noopener" class="hover:text-[#e00122] transition-colors">' + p.title + ' ↗</a>'
+              : p.title) +
+          '</h3>' +
+          '<p class="text-xs text-[#6b7280] leading-relaxed">' + p.authors + '</p>' +
+          '<p class="text-[11px] font-medium text-[#374151] mt-auto pt-1 border-t border-[#f3f4f6]">' + p.venue + '</p>';
+        grid.appendChild(card);
+      });
+
+      section.appendChild(grid);
+
+      /* Divider between people */
+      var wrap = document.createElement('div');
+      wrap.appendChild(section);
+      root.appendChild(wrap);
+    });
+
+  })();
+  </script>
+
 </body>
 </html>
