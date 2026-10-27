@@ -4,36 +4,537 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Research & Projects · CincySI Lab</title>
-  <meta name="description" content="Active and concluded research initiatives of the CincySI Lab at the University of Cincinnati.">
+  <meta name="description" content="Active research areas of the CincySI Lab at the University of Cincinnati.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <script src="js/theme.js"></script>
+  <script src="js/data.js"></script>
   <style>
     body { font-family: 'Inter', system-ui, sans-serif; }
+
+    /* ── Knowledge graph canvas ── */
+    #kg-wrap {
+      position: relative;
+      width: 100%;
+      height: 500px;
+      background: linear-gradient(135deg, #08090e 0%, #0d0f18 50%, #0a0b10 100%);
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.07);
+      box-shadow: 0 24px 80px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.05);
+    }
+    @media (max-width: 640px) { #kg-wrap { height: 360px; } }
+
+    #kg-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Node tooltip */
+    #kg-tooltip {
+      position: absolute;
+      background: rgba(10,11,16,0.97);
+      border: 1px solid rgba(224,1,34,0.45);
+      border-radius: 10px;
+      padding: 8px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #fff;
+      pointer-events: none;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.15s;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(224,1,34,0.2);
+    }
+
+    /* ── Research cards — same style as screenshot ── */
+    .r-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 22px 24px 20px;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .r-card:hover {
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      border-color: rgba(224,1,34,0.2);
+    }
+    .r-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .r-card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #0f1117;
+      line-height: 1.35;
+    }
+    .r-badge {
+      flex-shrink: 0;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 11px;
+      border-radius: 999px;
+      background: #f0fdf4;
+      color: #15803d;
+      border: 1px solid #bbf7d0;
+    }
+    .r-card-body {
+      font-size: 13px;
+      color: #6b7280;
+      line-height: 1.65;
+      flex: 1;
+      margin-bottom: 14px;
+    }
+    .r-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: auto;
+    }
+    .r-tag {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 6px;
+      background: #f3f4f6;
+      color: #374151;
+      border: 1px solid #e5e7eb;
+    }
   </style>
 </head>
-<body class="bg-silver text-ink antialiased min-h-screen flex flex-col">
+<body class="bg-[#f2f2f0] text-ink antialiased min-h-screen flex flex-col">
 
   <div id="site-header"></div>
 
   <main class="flex-1 max-w-6xl w-full mx-auto px-5 sm:px-8 py-14 md:py-20">
 
     <p class="text-xs font-semibold uppercase tracking-[0.2em] text-red">Research &amp; Projects</p>
-    <h1 class="mt-3 text-4xl md:text-5xl font-bold tracking-tight">Active Initiatives</h1>
-    <p class="mt-4 max-w-3xl text-muted leading-relaxed">
-      Our work spans data science, artificial intelligence, and human-centred computing,
-      supported by the NSF, Office of Naval Research, and institutional partners.
+    <h1 class="mt-3 text-4xl md:text-5xl font-bold tracking-tight text-[#0f1117]">Active Research</h1>
+    <p class="mt-4 max-w-2xl text-[#6b7280] leading-relaxed text-sm sm:text-base">
+      Our work spans trustworthy AI, knowledge representation, privacy-preserving machine learning, and biomedical informatics. We build intelligent systems that are safe, explainable, and impactful.
     </p>
 
-    <div data-render="projects" class="mt-12 grid gap-6 md:grid-cols-2"></div>
+    <!-- ── Knowledge Graph ── -->
+    <div class="mt-10 mb-12">
+      <div id="kg-wrap">
+        <canvas id="kg-canvas"></canvas>
+        <div id="kg-tooltip"></div>
+        <!-- subtle label -->
+        <div style="position:absolute;bottom:14px;right:18px;font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.18);pointer-events:none;">
+          Research Map · CincySI
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Cards grid ── -->
+    <div class="grid gap-5 md:grid-cols-2" id="research-cards"></div>
 
   </main>
 
   <div id="site-footer"></div>
-
-  <script src="js/data.js"></script>
   <script src="js/main.js"></script>
+
+  <script>
+  (function () {
+
+    /* ════════════════════════════════════════
+       DATA
+    ════════════════════════════════════════ */
+    var AREAS = [
+      {
+        label: 'AI Safety',
+        short: 'AI Safety',
+        body: 'Adversarial robustness, out-of-distribution detection, and failure mode analysis to ensure models behave reliably when deployed in real-world settings.',
+        tags: ['Adversarial Robustness', 'OOD Detection', 'Failure Analysis']
+      },
+      {
+        label: 'LLM Evaluation',
+        short: 'LLM Eval',
+        body: 'Systematic benchmarking of large language models covering capability measurement, hallucination detection, and confidence calibration.',
+        tags: ['Benchmarking', 'Hallucination Detection', 'Calibration']
+      },
+      {
+        label: 'Knowledge Graphs',
+        short: 'Knowledge\nGraphs',
+        body: 'Structured representations that let machines reason over facts and relationships at scale, powering inference engines and clinical AI applications.',
+        tags: ['Graph Reasoning', 'Ontologies', 'Semantic Web']
+      },
+      {
+        label: 'Federated Learning',
+        short: 'Federated\nLearning',
+        body: 'Training models across distributed data sources without sharing raw data, enabling institutional collaboration while fully preserving data privacy.',
+        tags: ['Privacy-Preserving ML', 'Distributed Training', 'Data Security']
+      },
+      {
+        label: 'Biomedical Informatics',
+        short: 'Biomedical\nInformatics',
+        body: "Active collaboration with Cincinnati Children's Hospital Medical Center on biomedical knowledge graphs and clinical analytics frameworks for research.",
+        tags: ['CCHMC Collaboration', 'Clinical AI', 'Health Analytics']
+      },
+      {
+        label: 'Trustworthy Computing',
+        short: 'Trustworthy\nComputing',
+        body: 'Interpretability, explainability, and formal verification methods for designing AI systems that humans can audit, understand, and confidently rely on.',
+        tags: ['Explainability', 'Interpretability', 'Formal Verification']
+      },
+      {
+        label: 'Natural Language Processing',
+        short: 'NLP',
+        body: 'Text understanding, generation, summarisation, and multilingual reasoning research focused on building accurate and contextually aware language models.',
+        tags: ['Text Understanding', 'Generation', 'Multilingual Reasoning']
+      },
+      {
+        label: 'Anomaly Detection',
+        short: 'Anomaly\nDetection',
+        body: 'Statistical and deep learning methods for detecting unusual patterns in data, with applications in cybersecurity, healthcare monitoring, and critical infrastructure.',
+        tags: ['Outlier Detection', 'Cybersecurity', 'Healthcare Monitoring']
+      }
+    ];
+
+    /* edges: pairs of indices that are connected */
+    var EDGES = [
+      [0,1],[0,5],[0,6],   // AI Safety ↔ LLM Eval, Trustworthy, NLP
+      [1,2],[1,6],          // LLM Eval ↔ KG, NLP
+      [2,4],[2,3],          // KG ↔ Biomedical, Federated
+      [3,4],[3,5],          // Federated ↔ Biomedical, Trustworthy
+      [4,7],                // Biomedical ↔ Anomaly
+      [5,6],[5,7],          // Trustworthy ↔ NLP, Anomaly
+      [6,7]                 // NLP ↔ Anomaly
+    ];
+
+    /* ════════════════════════════════════════
+       CARDS
+    ════════════════════════════════════════ */
+    var grid = document.getElementById('research-cards');
+    AREAS.forEach(function (a) {
+      var card = document.createElement('div');
+      card.className = 'r-card';
+      card.innerHTML =
+        '<div class="r-card-top">' +
+          '<h3 class="r-card-title">' + a.label + '</h3>' +
+          '<span class="r-badge">Active</span>' +
+        '</div>' +
+        '<p class="r-card-body">' + a.body + '</p>' +
+        '<div class="r-tags">' +
+          a.tags.map(function (t) { return '<span class="r-tag">' + t + '</span>'; }).join('') +
+        '</div>';
+      grid.appendChild(card);
+    });
+
+    /* ════════════════════════════════════════
+       KNOWLEDGE GRAPH CANVAS
+    ════════════════════════════════════════ */
+    var wrap    = document.getElementById('kg-wrap');
+    var canvas  = document.getElementById('kg-canvas');
+    var tooltip = document.getElementById('kg-tooltip');
+    var ctx     = canvas.getContext('2d');
+
+    var W, H, dpr;
+    var nodes   = [];   // {x, y, vx, vy, idx}
+    var hovIdx  = -1;
+    var t       = 0;
+
+    var RED     = '#e00122';
+    var RED_DIM = 'rgba(224,1,34,0.18)';
+
+    function resize() {
+      dpr = Math.min(2, window.devicePixelRatio || 1);
+      W = wrap.clientWidth;
+      H = wrap.clientHeight;
+      canvas.width  = Math.round(W * dpr);
+      canvas.height = Math.round(H * dpr);
+      canvas.style.width  = W + 'px';
+      canvas.style.height = H + 'px';
+      placeNodes();
+    }
+
+    /* place nodes in a nice ellipse with slight jitter */
+    function placeNodes() {
+      var cx = W / 2, cy = H / 2;
+      var rx = W * 0.36, ry = H * 0.36;
+      nodes = AREAS.map(function (a, i) {
+        var angle = (i / AREAS.length) * 2 * Math.PI - Math.PI / 2;
+        var jx = Math.sin(i * 13.7) * rx * 0.08;
+        var jy = Math.cos(i * 9.3)  * ry * 0.08;
+        return {
+          x: cx + Math.cos(angle) * rx + jx,
+          y: cy + Math.sin(angle) * ry + jy,
+          tx: cx + Math.cos(angle) * rx + jx,  // target (gentle float)
+          ty: cy + Math.sin(angle) * ry + jy,
+          idx: i,
+          label: a.short
+        };
+      });
+    }
+
+    /* ── draw ── */
+    function draw() {
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, W, H);
+
+      /* large ambient glow in center */
+      var grd = ctx.createRadialGradient(W/2, H/2, 0, W/2, H/2, Math.min(W,H)*0.6);
+      grd.addColorStop(0, 'rgba(224,1,34,0.09)');
+      grd.addColorStop(0.5, 'rgba(80,20,200,0.04)');
+      grd.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = grd;
+      ctx.fillRect(0, 0, W, H);
+
+      /* corner accent glows */
+      [[0,0],[W,0],[0,H],[W,H]].forEach(function(c, ci) {
+        var cg = ctx.createRadialGradient(c[0], c[1], 0, c[0], c[1], 180);
+        cg.addColorStop(0, ci % 2 === 0 ? 'rgba(224,1,34,0.06)' : 'rgba(30,60,180,0.04)');
+        cg.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = cg;
+        ctx.fillRect(0, 0, W, H);
+      });
+
+      /* animated grid */
+      var time = t * 0.0002;
+      ctx.strokeStyle = 'rgba(255,255,255,0.025)';
+      ctx.lineWidth = 0.5;
+      var gridSize = 56;
+      var offsetX = (time * 8) % gridSize;
+      var offsetY = (time * 4) % gridSize;
+      for (var gx = -gridSize + offsetX; gx < W + gridSize; gx += gridSize) {
+        ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, H); ctx.stroke();
+      }
+      for (var gy = -gridSize + offsetY; gy < H + gridSize; gy += gridSize) {
+        ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(W, gy); ctx.stroke();
+      }
+
+      /* floating particles */
+      for (var pi = 0; pi < 40; pi++) {
+        var px = (Math.sin(pi * 4.1 + time * 0.8) * 0.5 + 0.5) * W;
+        var py = (Math.cos(pi * 2.7 + time * 0.5) * 0.5 + 0.5) * H;
+        var pa = 0.05 + Math.abs(Math.sin(pi * 1.3 + time)) * 0.1;
+        var pr = 0.8 + Math.abs(Math.sin(pi * 0.7 + time * 0.3)) * 1.2;
+        ctx.fillStyle = pi % 3 === 0
+          ? 'rgba(224,80,120,' + pa.toFixed(3) + ')'
+          : 'rgba(160,185,230,' + pa.toFixed(3) + ')';
+        ctx.beginPath();
+        ctx.arc(px, py, pr, 0, 6.2832);
+        ctx.fill();
+      }
+
+      /* ── edges ── */
+      EDGES.forEach(function (e) {
+        var a = nodes[e[0]], b = nodes[e[1]];
+        var isHov = (e[0] === hovIdx || e[1] === hovIdx);
+        var pulse = Math.sin(t * 0.0012 + e[0] * 0.5 + e[1] * 0.3) * 0.5 + 0.5;
+
+        if (isHov) {
+          /* highlighted edge: crisp white-silver, no bloom */
+          ctx.strokeStyle = 'rgba(220,228,242,0.65)';
+          ctx.lineWidth = 1.5;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+
+          /* single small dot travelling along the edge */
+          var prog = (t * 0.0014 + e[0] * 0.3) % 1;
+          var ddx = a.x + (b.x - a.x) * prog;
+          var ddy = a.y + (b.y - a.y) * prog;
+          ctx.fillStyle = 'rgba(255,255,255,0.75)';
+          ctx.beginPath();
+          ctx.arc(ddx, ddy, 2, 0, 6.2832);
+          ctx.fill();
+        } else {
+          /* idle edge — always visible */
+          var alpha = 0.22 + pulse * 0.08;
+          ctx.strokeStyle = 'rgba(140,165,220,' + alpha.toFixed(3) + ')';
+          ctx.lineWidth = 0.9;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        }
+      });
+
+      /* ── center hub ── */
+      var cx = W/2, cy = H/2;
+      var hubR = 22;
+      var hubPulse = Math.sin(t * 0.0015) * 0.5 + 0.5;
+
+      /* outer rotating ring */
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.rotate(t * 0.0005);
+      ctx.strokeStyle = 'rgba(224,1,34,' + (0.3 + hubPulse * 0.25).toFixed(2) + ')';
+      ctx.lineWidth = 1.5;
+      ctx.setLineDash([6, 5]);
+      ctx.beginPath();
+      ctx.arc(0, 0, hubR + 14, 0, 6.2832);
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.restore();
+
+      /* hub glow */
+      var hg = ctx.createRadialGradient(cx, cy, 0, cx, cy, hubR * 3);
+      hg.addColorStop(0, 'rgba(224,1,34,0.45)');
+      hg.addColorStop(0.4, 'rgba(180,10,40,0.15)');
+      hg.addColorStop(1, 'rgba(224,1,34,0)');
+      ctx.fillStyle = hg;
+      ctx.beginPath();
+      ctx.arc(cx, cy, hubR * 3, 0, 6.2832);
+      ctx.fill();
+
+      /* hub core */
+      var hc = ctx.createRadialGradient(cx - hubR*0.2, cy - hubR*0.2, 0, cx, cy, hubR);
+      hc.addColorStop(0, '#ff5577');
+      hc.addColorStop(0.5, '#e00122');
+      hc.addColorStop(1, '#8b0015');
+      ctx.fillStyle = hc;
+      ctx.shadowColor = '#e00122';
+      ctx.shadowBlur = 20;
+      ctx.beginPath();
+      ctx.arc(cx, cy, hubR, 0, 6.2832);
+      ctx.fill();
+      ctx.shadowBlur = 0;
+
+      /* hub label */
+      ctx.save();
+      ctx.font = '700 10px Inter,system-ui,sans-serif';
+      ctx.fillStyle = 'rgba(255,255,255,0.9)';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('CincySI', cx, cy - 5);
+      ctx.font = '500 8px Inter,system-ui,sans-serif';
+      ctx.fillStyle = 'rgba(255,255,255,0.5)';
+      ctx.fillText('Research', cx, cy + 6);
+      ctx.restore();
+
+      /* ── nodes ── */
+      nodes.forEach(function (n) {
+        var isHovN = n.idx === hovIdx;
+        var pulse2 = Math.sin(t * 0.0018 + n.idx * 1.1) * 0.5 + 0.5;
+        var r = isHovN ? 14 : 9;
+
+        /* soft ambient halo (same for idle and hover, just slightly larger on hover) */
+        var ag = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, r * (isHovN ? 4 : 3));
+        ag.addColorStop(0, 'rgba(100,140,220,' + (isHovN ? 0.18 : (0.08 + pulse2 * 0.06)).toFixed(2) + ')');
+        ag.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = ag;
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, r * (isHovN ? 4 : 3), 0, 6.2832);
+        ctx.fill();
+
+        /* pulse ring (idle only) */
+        if (!isHovN) {
+          var rr = r + 4 + pulse2 * 5;
+          ctx.strokeStyle = 'rgba(160,185,230,' + (0.12 + pulse2 * 0.08).toFixed(2) + ')';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, rr, 0, 6.2832);
+          ctx.stroke();
+        }
+
+        /* node gradient fill — brighter white on hover, no red */
+        var ng = ctx.createRadialGradient(n.x - r*0.3, n.y - r*0.3, 0, n.x, n.y, r);
+        if (isHovN) {
+          ng.addColorStop(0, 'rgba(255,255,255,1)');
+          ng.addColorStop(0.55, 'rgba(215,228,250,0.95)');
+          ng.addColorStop(1, 'rgba(160,190,240,0.85)');
+        } else {
+          ng.addColorStop(0, 'rgba(230,238,255,0.9)');
+          ng.addColorStop(0.6, 'rgba(185,208,240,0.82)');
+          ng.addColorStop(1, 'rgba(130,165,220,0.65)');
+        }
+        ctx.fillStyle = ng;
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, r, 0, 6.2832);
+        ctx.fill();
+
+        /* rim */
+        ctx.strokeStyle = isHovN ? 'rgba(200,218,248,0.9)' : 'rgba(155,185,235,0.35)';
+        ctx.lineWidth = isHovN ? 1.5 : 1;
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, r, 0, 6.2832);
+        ctx.stroke();
+
+        /* shine dot */
+        ctx.fillStyle = 'rgba(255,255,255,' + (isHovN ? 0.5 : 0.25) + ')';
+        ctx.beginPath();
+        ctx.arc(n.x - r*0.28, n.y - r*0.28, r*0.3, 0, 6.2832);
+        ctx.fill();
+
+        /* label */
+        var lines = n.label.split('\n');
+        var above = n.y < H / 2;
+        var fs = isHovN ? 12 : 11;
+        var lineH = fs + 2;
+        var labelY = above
+          ? n.y - r - (lines.length > 1 ? lineH * lines.length + 4 : lineH + 4)
+          : n.y + r + 6;
+
+        lines.forEach(function (ln, li) {
+          /* text shadow for legibility */
+          ctx.save();
+          ctx.font = (isHovN ? '700' : '600') + ' ' + fs + 'px Inter,system-ui,sans-serif';
+          ctx.fillStyle = 'rgba(0,0,0,0.6)';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'top';
+          ctx.fillText(ln, n.x + 1, labelY + li * lineH + 1);
+          ctx.fillStyle = isHovN ? 'rgba(255,255,255,1)' : 'rgba(210,225,248,0.88)';
+          ctx.fillText(ln, n.x, labelY + li * lineH);
+          ctx.restore();
+        });
+      });
+    }
+
+    function frame(now) { t = now; draw(); requestAnimationFrame(frame); }
+
+    /* ── pointer ── */
+    function getPos(e) {
+      var rect = canvas.getBoundingClientRect();
+      var src  = e.touches ? e.touches[0] : e;
+      return { x: src.clientX - rect.left, y: src.clientY - rect.top };
+    }
+    function hitTest(mx, my) {
+      for (var i = 0; i < nodes.length; i++) {
+        if (Math.hypot(mx - nodes[i].x, my - nodes[i].y) < 22) return i;
+      }
+      return -1;
+    }
+
+    canvas.addEventListener('mousemove', function (e) {
+      var p = getPos(e);
+      var hit = hitTest(p.x, p.y);
+      hovIdx = hit;
+      canvas.style.cursor = hit >= 0 ? 'pointer' : 'default';
+      if (hit >= 0) {
+        tooltip.textContent = AREAS[hit].label;
+        tooltip.style.left = (p.x + 14) + 'px';
+        tooltip.style.top  = (p.y - 10) + 'px';
+        tooltip.style.opacity = '1';
+      } else {
+        tooltip.style.opacity = '0';
+      }
+    });
+    canvas.addEventListener('mouseleave', function () {
+      hovIdx = -1;
+      canvas.style.cursor = 'default';
+      tooltip.style.opacity = '0';
+    });
+
+    window.addEventListener('resize', resize);
+    resize();
+    requestAnimationFrame(frame);
+
+  })();
+  </script>
+
 </body>
 </html>
