@@ -351,7 +351,7 @@ window.SITE_DATA = {
       tags: []
     },
     {
-      name: "UC CS Thesis/Dissertation Template",
+      name: "Thesis/Dissertation Template",
       description: "LaTeX thesis/dissertation template for University of Cincinnati Computer Science graduate students, formatted to meet UC graduate school requirements.",
       url: "assets/Thesis_Template_UC_CS.zip",
       download: true,
