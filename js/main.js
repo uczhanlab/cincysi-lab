@@ -366,9 +366,9 @@
               </div>` : ''}
           </div>
           ${!isTodo(t.url) ? `
-            <a href="${esc(t.url)}" target="_blank" rel="noopener"
+            <a href="${esc(t.url)}" ${t.download ? 'download' : 'target="_blank" rel="noopener"'}
                class="self-start rounded-lg bg-red px-4 py-2 text-sm font-semibold text-white hover:bg-deep transition-colors">
-              Open tool ↗
+              ${t.download ? 'Download ↓' : 'Open tool ↗'}
             </a>` : `
             <span class="self-start rounded-lg bg-silver border border-border px-4 py-2 text-sm font-medium text-muted cursor-not-allowed">
               Coming soon
@@ -376,8 +376,6 @@
         </article>`).join('');
     }
   };
-
-  // fetchTechNews is called directly from index.html on DOMContentLoaded
 
   // ---------- boot ----------
   document.addEventListener('DOMContentLoaded', () => {

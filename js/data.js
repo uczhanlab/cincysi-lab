@@ -54,7 +54,6 @@ window.SITE_DATA = {
     fullName: "Super Intelligence Lab",
     institution: "University of Cincinnati",
     domain: "cincysi.si",
-    // DRAFT mission copy: replace with the lab's official statement.
     mission: "We build intelligent systems that combine data science, artificial intelligence, and human-centred computing, so that people and machines reason together more effectively than either could alone.",
     tagline: "Super Intelligence: where data, AI, and people work as one."
   },
@@ -63,26 +62,25 @@ window.SITE_DATA = {
   // NAVIGATION (top menu, in order)
   // -------------------------------------------------------------------
   nav: [
-    { label: "Home",         href: "index.html" },
-    { label: "Research",     href: "research.html" },
-    { label: "Members",      href: "members.html" },
-    { label: "Publications", href: "publications.html" },
-    { label: "Open Source Tools",    href: "tools.html" }
+    { label: "Home",             href: "index.html" },
+    { label: "Research",         href: "research.html" },
+    { label: "Members",          href: "members.html" },
+    { label: "Publications",     href: "publications.html" },
+    { label: "Open Source Tools", href: "tools.html" }
   ],
 
   // -------------------------------------------------------------------
-  // FOOTER LINKS. Replace "#TODO" with real URLs. Remove any you don't need.
+  // FOOTER LINKS
   // -------------------------------------------------------------------
   links: {
     email:    { label: "Contact the lab",  url: "mailto:justin.zhan@uc.edu" },
     linkedin: { label: "LinkedIn",         url: "#TODO" },
-    github:   { url: 'https://github.com/uczhanlab', label: 'GitHub' },
+    github:   { label: "GitHub",           url: "https://github.com/uczhanlab" },
     drZhan:   { label: "Dr. Zhan's site",  url: "https://justinzhan.com" }
   },
 
   // -------------------------------------------------------------------
-  // NEWS & ANNOUNCEMENTS (newest first is sorted automatically)
-  // The entries below are PLACEHOLDERS. Replace them with real items.
+  // NEWS & ANNOUNCEMENTS (newest first)
   // -------------------------------------------------------------------
   news: [
     {
@@ -102,16 +100,15 @@ window.SITE_DATA = {
   ],
 
   // -------------------------------------------------------------------
-  // GROUP PHOTO. Leave `src` empty to show the placeholder card.
+  // GROUP PHOTOS
   // -------------------------------------------------------------------
-groupPhotos: [
-  { src: "images/GrpPic1.jpeg", caption: "CincySI Research Building, Fall 2026" },
-  { src: "images/GrpPic3.jpg", caption: "Digital Futures 5th floor workspace, Fall 2026" },
-],
+  groupPhotos: [
+    { src: "images/GrpPic1.jpeg", caption: "CincySI Research Building, Fall 2026" },
+    { src: "images/GrpPic3.jpg",  caption: "Digital Futures 5th floor workspace, Fall 2026" },
+  ],
 
   // -------------------------------------------------------------------
-  // PROJECTS. Representative funded work from Dr. Zhan's UC Research
-  // Directory profile. Verify titles, status, and wording before publishing.
+  // PROJECTS
   // -------------------------------------------------------------------
   projects: [
     {
@@ -147,7 +144,7 @@ groupPhotos: [
   ],
 
   // -------------------------------------------------------------------
-  // MEMBERS. The first entry is the PI. Remaining entries are PLACEHOLDERS.
+  // MEMBERS
   // -------------------------------------------------------------------
   members: [
     {
@@ -272,7 +269,7 @@ groupPhotos: [
     },
     {
       name: "Dakshitha Sai Pusala",
-      role: "Master’s Student",
+      role: "Master's Student",
       photo: "images/members/Dakshitha Pusala.jpg",
       email: "pusaladi@mail.uc.edu",
       focus: "AI, Machine Learning",
@@ -326,13 +323,12 @@ groupPhotos: [
       focus: "AI, Bioinformatics, Complex Network",
       links: { linkedin: "", github: "", scholar: "", website: "" }
     },
-
   ],
 
-    // -------------------------------------------------------------------
+  // -------------------------------------------------------------------
   // LAB TOOLS
   // -------------------------------------------------------------------
-tools: [
+  tools: [
     {
       name: "BearTrack",
       description: "Weekly work reporting portal for lab members to log progress and share updates with Dr. Zhan.",
@@ -352,6 +348,14 @@ tools: [
       description: "Verifies references in academic manuscripts before submission. Upload a paper or paste a reference list and it checks DOIs, authors, journals, and publication years against published records, flagging invalid citations and duplicates.",
       url: "https://citationchecker.jp/",
       credit: { label: "Recommended by", name: "Gaurab Baral" },
+      tags: []
+    },
+    {
+      name: "UC CS Thesis Template",
+      description: "LaTeX thesis template for University of Cincinnati Computer Science graduate students, formatted to meet UC graduate school requirements.",
+      url: "assets/Thesis_Template_UC_CS.zip",
+      download: true,
+      credit: { label: "Recommended by", name: "Dr. Justin Zhan" },
       tags: []
     }
   ]
